@@ -4,6 +4,8 @@
 
 Notifications - Add reactive notifications to your meteor application
 
+See example @ [meteor.com]http://notifications-example.meteor.com/
+
 ## Installation
 
 Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
