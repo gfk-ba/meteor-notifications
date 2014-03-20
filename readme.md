@@ -25,6 +25,8 @@ First add the following to the template you want to be the parent for your notif
 {{notifications}}
 ```
 
+
+Then run the following code in your application to spawn a notification:
 ``` javascript
 Notifications.addNotification('title', 'message');
 ```
