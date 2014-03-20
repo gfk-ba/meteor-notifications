@@ -1,8 +1,8 @@
 [![Build Status](https://secure.travis-ci.org/gfk-ba/meteor-notifications.png)](http://travis-ci.org/gfk-ba/meteor-notifications)
 
-# Meteor Notifications
+# Meteor notifications
 
-Notifications - Add reactive notifications to your meteor application
+notifications - Add reactive notifications to your meteor application
 
 See example @ [meteor.com]http://notifications-example.meteor.com/
 
