@@ -1,0 +1,68 @@
+@screen-sm: 1024px;
+
+//Override or add extra styling for standard bootstrap alert boxes
+ul.notifications {
+    z-index: 10001 !important;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    list-style-type: none;
+    padding: 0;
+    width: 600px;
+    @media(max-width: @screen-sm) {
+        width: 80%;
+    }
+}
+
+li.notification {
+    border-radius: 3px;
+    padding: 14px;
+    margin: 10px auto 0;
+    color: #fff;
+    position: relative;
+    display: none;
+    &.hidden {
+        height: 0;
+        opacity: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+    a {
+        &, &:hover, &:visited {
+            color: white;
+        }
+    }
+    &.error {
+        background-color: #F0342B;
+    }
+    &.warning {
+        background-color: #f5a93a;
+    }
+    &.info {
+        background-color: #A6C5D0;
+    }
+    &.success {
+        background-color: #A5DD8C;
+    }
+    & div.title {
+        top: 0;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    & div.message {
+        bottom: 0;
+        vertical-align: middle;
+        a {
+            text-decoration: underline !important;
+        }
+    }
+    & div.closeButton {
+        top: 0px;
+        right: 10px;
+        position:absolute;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 20px;
+    }
+}
