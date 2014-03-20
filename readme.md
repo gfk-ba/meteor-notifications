@@ -27,45 +27,6 @@ First add the following to the template you want to be the parent for your notif
 Notifications.addNotification('title', 'message');
 ```
 
-This is a reactive variable which will trigger invalidations as the app changes pages. Usually, you'll just want to render the template that corresponds to the current page using the following helper that finds the template by name:
-
-``` handlebars
-{{renderPage}}
-```
-
-It's common to render the inside page isolated from the layout:
-
-``` handlebars
-{{#isolate}} {{renderPage}} {{/isolate}}
-```
-
-To define a route, simply specify the URL it matches and the name of the template it should render. If you want to get fancy, you can specify a reactive function that returns a template name. It will get repeatedly executed as its reactive dependencies change.
-
-Be careful not to specify your routes inside the ```Meteor.startup``` function, or the routing won't work for the first load.
-``` javascript
-Meteor.Router.add({
-  '/news': 'news',
-
-  '/about': function() {
-    if (Session.get('aboutUs')) {
-      return 'aboutUs';
-    } else {
-      return 'aboutThem';
-    }
-  },
-
-  '*': 'not_found'
-});
-```
-
-To navigate to such a URL from in the app, either create a link which links to the URL (the router will intercept clicks and trigger relevant state changes), or call directly:
-
-``` javascript
-Meteor.Router.to('/news');
-```
-
-Note that this doesn't reload the app, it instead uses HTML5 `pushState` to change the URL whilst remaining loaded.
-
 ### Api documentation
 
 addNotification(title, message, options)
