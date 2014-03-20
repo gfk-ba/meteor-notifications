@@ -1,10 +1,10 @@
 {
   "name": "Notifications",
   "description": "Notifications - adds a notifications sytem to your meteor applications",
-  "homepage": "",
+  "homepage": "https://github.com/gfk-ba/meteor-notifications",
   "author": "Marco de Jongh marco.dejongh@gfk.com (https://github.com/marcodejongh/)",
   "version": "0.1.0",
-  "git": "",
+  "git": "git@github.com:gfk-ba/meteor-notifications.git",
   "packages": {
     "jquery-ui": {}
   }
