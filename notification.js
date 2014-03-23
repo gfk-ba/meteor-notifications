@@ -7,11 +7,11 @@ Template.notification.rendered = function () {
         notificationElement = $(this.find('li'));
 
     if (this.data.hidden) {
-        notificationElement.addClass('hidden', {duration: 400, complete: function () {
+        notificationElement.addClass('hidden', {duration: this.data.animationSpeed, complete: function () {
             Notifications.remove({_id: self.data._id});
         }});
     } else {
-        notificationElement.show({effect: 'fade', duration: 400});
+        notificationElement.show({effect: 'fade', duration: this.data.animationSpeed});
     }
 };
 

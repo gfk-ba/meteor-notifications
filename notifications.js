@@ -23,6 +23,7 @@ var constructor = (function() {
         notification.message = message;
         notification.type = options.type;
         notification.userCloseable = options.userCloseable;
+        notification.animationSpeed = options.animationSpeed;
 
         if (options.timeout) {
             notification.expires = new Date().getTime() + options.timeout;
@@ -154,7 +155,8 @@ var constructor = (function() {
     Notifications.prototype.defaultOptions = {
         type: Notifications.prototype.TYPES.INFO,
         userCloseable: true,
-        timeout: 0
+        timeout: 0,
+        animationSpeed: 400
     };
 
     return Notifications;

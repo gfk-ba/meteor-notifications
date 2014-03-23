@@ -31,6 +31,10 @@ Then run the following code in your application to spawn a notification:
 Notifications.addNotification('title', 'message');
 ```
 
+### Changing default settings
+
+To change the animation speed or the change other default notification settings change the Notifications.defaultOptions object.
+
 ### Api documentation
 
 addNotification(title, message, options)
@@ -48,6 +52,7 @@ Adds a notification
         *type* : use one of the values from Notifications.TYPE
         *userCloseable*: enable or disable the user from closing the notifications
         *timeout*: After how many ms the notification should disappear (0 is never)
+        *animationSpeed*: Duration of the animation in ms
 
 
 getNotificationClass(notificationType)
