@@ -6,6 +6,5 @@
   "version": "0.4.0",
   "git": "https://github.com/gfk-ba/meteor-notifications",
   "packages": {
-    "jquery-ui": {}
   }
 }

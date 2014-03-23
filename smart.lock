@@ -2,12 +2,12 @@
   "meteor": {},
   "dependencies": {
     "basePackages": {
-      "Notifications": {
+      "notifications": {
         "path": "."
       }
     },
     "packages": {
-      "Notifications": {
+      "notifications": {
         "path": "."
       },
       "jquery-ui": {

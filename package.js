@@ -3,7 +3,7 @@ Package.describe({
 });
 
 Package.on_use(function (api, where) {
-    api.use(['templating', 'underscore', 'less', 'jquery-ui']);
+    api.use(['templating', 'underscore', 'less']);
 
     api.add_files('notifications.less', ['client']);
     api.add_files('notifications.html', ['client']);

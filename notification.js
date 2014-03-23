@@ -7,7 +7,7 @@ Template.notification.rendered = function () {
         notificationElement = $(this.find('li'));
 
     if (this.data.hidden) {
-        notificationElement.addClass('hidden', {duration: this.data.animationSpeed, complete: function () {
+        notificationElement.animate(this.data.hideAnimationProperties, {duration: this.data.animationSpeed, complete: function () {
             Notifications.remove({_id: self.data._id});
         }});
     } else {

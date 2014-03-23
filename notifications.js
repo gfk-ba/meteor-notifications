@@ -24,7 +24,7 @@ var constructor = (function() {
         notification.type = options.type;
         notification.userCloseable = options.userCloseable;
         notification.animationSpeed = options.animationSpeed;
-
+        notification.hideAnimationProperties = options.hideAnimationProperties;
         if (options.timeout) {
             notification.expires = new Date().getTime() + options.timeout;
         }
@@ -156,7 +156,14 @@ var constructor = (function() {
         type: Notifications.prototype.TYPES.INFO,
         userCloseable: true,
         timeout: 0,
-        animationSpeed: 400
+        animationSpeed: 400,
+        hideAnimationProperties: {
+            height: 0,
+            opacity: 0,
+            paddingTop: 0,
+            paddingBottom: 0,
+            marginTop: 0
+        }
     };
 
     return Notifications;
