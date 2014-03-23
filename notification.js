@@ -11,7 +11,7 @@ Template.notification.rendered = function () {
             Notifications.remove({_id: self.data._id});
         }});
     } else {
-        notificationElement.show({effect: 'fade', duration: this.data.animationSpeed});
+        notificationElement.fadeIn({duration: this.data.animationSpeed});
     }
 };
 
