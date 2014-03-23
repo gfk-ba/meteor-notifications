@@ -23,7 +23,7 @@ describe('Notifications', function () {
 
         it('Should use the defaultOptions to construct the object to pass to _add', function () {
             var _add = sandbox.stub(instance, '_add');
-            var expected = {};
+            var expected = _.clone(instance.defaultOptions);
             var testMessage = 'test123';
             var testTitle = 'Title';
 
@@ -31,7 +31,7 @@ describe('Notifications', function () {
             expected.message = testMessage;
             expected.type = instance.defaultOptions.type;
             expected.userCloseable = instance.defaultOptions.userCloseable;
-
+            delete expected.timeout;
 
             instance.addNotification(testTitle, testMessage);
             expect(_add).toHaveBeenCalledWith(expected);
@@ -55,7 +55,7 @@ describe('Notifications', function () {
 
             it('Should use the options to construct the object to pass to _add', function () {
                 var _add = sandbox.stub(instance, '_add');
-                var expected = {};
+                var expected = _.clone(instance.defaultOptions);
                 var testMessage = 'test123';
                 var testTitle = 'Title';
 
@@ -63,7 +63,7 @@ describe('Notifications', function () {
                 expected.message = testMessage;
                 expected.type = testOptions.type;
                 expected.userCloseable = testOptions.userCloseable;
-
+                delete expected.timeout;
                 instance.addNotification(testTitle, testMessage, _.clone(testOptions));
                 expect(_add).toHaveBeenCalledWith(expected);
             });

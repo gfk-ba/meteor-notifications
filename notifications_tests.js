@@ -52,16 +52,13 @@ afterArray.push(function () {
 
     Tinytest.add('#addNotification - Should use the defaultOptions to construct the object to pass to _add', wrapTest(beforeArray, afterArray, function (test) {
         var _add = sandbox.stub(instance, '_add');
-        var expected = {};
+        var expected = _.clone(instance.defaultOptions);
         var testMessage = 'test123';
         var testTitle = 'Title';
 
         expected.title = testTitle;
         expected.message = testMessage;
-        expected.type = instance.defaultOptions.type;
-        expected.userCloseable = instance.defaultOptions.userCloseable;
-
-
+        delete expected.timeout;
         instance.addNotification(testTitle, testMessage);
 
         test.equal(_add.args[0][0], expected, '_add not called with expected values');
@@ -87,7 +84,7 @@ afterArray.push(function () {
 
         Tinytest.add('#addNotification - Called with options - Should use the defaultOptions to construct the object to pass to _add', wrapTest(beforeArray, afterArray, function (test) {
             var _add = sandbox.stub(instance, '_add');
-            var expected = {};
+            var expected = _.clone(instance.defaultOptions);
             var testMessage = 'test123';
             var testTitle = 'Title';
 
@@ -95,7 +92,7 @@ afterArray.push(function () {
             expected.message = testMessage;
             expected.type = testOptions.type;
             expected.userCloseable = testOptions.userCloseable;
-
+            delete expected.timeout;
             instance.addNotification(testTitle, testMessage, _.clone(testOptions));
             test.equal(_add.args[0][0], expected, '_add not called with expected values');
         }));
