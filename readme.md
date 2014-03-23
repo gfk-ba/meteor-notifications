@@ -26,9 +26,12 @@ First add the following to the template you want to be the parent for your notif
 ```
 
 
-Then run the following code in your application to spawn a notification:
+Then run the following code in your application to spawn a notification of the type of the method you use to spawn it:
 ``` javascript
-Notifications.addNotification('title', 'message');
+Notifications.warn('title', 'message');
+Notifications.error('title', 'message');
+Notifications.info('title', 'message');
+Notifications.success('title', 'message');
 ```
 
 ### Changing default settings
@@ -37,8 +40,13 @@ To change the animation speed or the change other default notification settings 
 
 ### Api documentation
 
-addNotification(title, message, options)
-----------------------------------------
+Notifications()
+---------------
+Creates an instance of Notifications
+
+
+addNotification(title, message, \[options={}\])
+-----------------------------------------------
 Adds a notification
 
 
@@ -48,12 +56,64 @@ Adds a notification
 
 **message**:  *string*,  The message of the notification
 
-**options**:  *object*,  Options to use for the notification
+**[options={}]**:  *object*,  Options object to use for notification
         *type* : use one of the values from Notifications.TYPE
         *userCloseable*: enable or disable the user from closing the notifications
         *timeout*: After how many ms the notification should disappear (0 is never)
         *animationSpeed*: Duration of the animation in ms
 
+
+error(title, message, \[options={}\])
+-------------------------------------
+Wraps addNotification, sets type to error
+
+
+**Parameters**
+
+**title**,  The title of the notification
+
+**message**,  The message of the notification
+
+**[options={}]**:  *object*,  Options object to use for notification
+
+warn(title, message, \[options={}\])
+------------------------------------
+Wraps addNotification, sets type to warning
+
+
+**Parameters**
+
+**title**,  The title of the notification
+
+**message**,  The message of the notification
+
+**[options={}]**:  *object*,  Options object to use for notification
+
+info(title, message, \[options={}\])
+------------------------------------
+Wraps addNotification, sets type to info
+
+
+**Parameters**
+
+**title**,  The title of the notification
+
+**message**,  The message of the notification
+
+**[options={}]**:  *object*,  Options object to use for notification
+
+success(title, message, \[options={}\])
+---------------------------------------
+Wraps addNotification, sets type to success
+
+
+**Parameters**
+
+**title**,  The title of the notification
+
+**message**,  The message of the notification
+
+**[options={}]**:  *object*,  Options object to use for notification
 
 getNotificationClass(notificationType)
 --------------------------------------
@@ -69,14 +129,14 @@ Gets the class containing the color for the notification
 
 *string*,  The classname to use for the notification
 
-hide(The)
+hide(selector)
 ---------
 Adds the hidden property to the notifications matching the selector
 
 
 **Parameters**
 
-**The**:  *object*,  mongo selector to use on the notification
+**selector**:  *object*,  mongo selector to find the notification with
 
 remove(selector)
 ----------------
@@ -86,7 +146,6 @@ Removes the notifications matching the selector
 **Parameters**
 
 **selector**,
-
 
 ##Note
 I already integrated the code in our application before creating the package. I partially converted the jasmine tests to tinytest but my solution

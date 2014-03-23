@@ -12,7 +12,7 @@ var constructor = (function() {
      * Adds a notification
      * @param {string} title The title of the notification
      * @param {string} message The message of the notification
-     * @param {object} options Options to use for the notification
+     * @param {object} [options={}] Options object to use for notification
      */
     Notifications.prototype.addNotification = function (title, message, options) {
         options = options || {};
@@ -30,6 +30,54 @@ var constructor = (function() {
         }
 
         this._add(notification);
+    };
+
+    /***
+     * Wraps addNotification, sets type to error
+     * @param title The title of the notification
+     * @param message The message of the notification
+     * @param {object} [options={}] Options object to use for notification
+     * @returns {*}
+     */
+    Notifications.prototype.error = function (title, message, options) {
+        options.type = this.TYPES.ERROR;
+        return this.addNotification(title, message, options);
+    };
+
+    /***
+     * Wraps addNotification, sets type to warning
+     * @param title The title of the notification
+     * @param message The message of the notification
+     * @param {object} [options={}] Options object to use for notification
+     * @returns {*}
+     */
+    Notifications.prototype.warn = function (title, message, options) {
+        options.type = this.TYPES.WARNING;
+        return this.addNotification(title, message, options);
+    };
+
+    /***
+     * Wraps addNotification, sets type to info
+     * @param title The title of the notification
+     * @param message The message of the notification
+     * @param {object} [options={}] Options object to use for notification
+     * @returns {*}
+     */
+    Notifications.prototype.info = function (title, message, options) {
+        options.type = this.TYPES.INFO;
+        return this.addNotification(title, message, options);
+    };
+
+    /***
+     * Wraps addNotification, sets type to success
+     * @param title The title of the notification
+     * @param message The message of the notification
+     * @param {object} [options={}] Options object to use for notification
+     * @returns {*}
+     */
+    Notifications.prototype.success = function (title, message, options) {
+        options.type = this.TYPES.SUCCESS;
+        return this.addNotification(title, message, options);
     };
 
     /***
@@ -117,7 +165,7 @@ var constructor = (function() {
 
     /***
      * Adds the hidden property to the notifications matching the selector
-     * @param {object}  The mongo selector to use on the notification
+     * @param {object}  mongo selector to find the notification with
      */
     Notifications.prototype.hide = function (selector) {
         this._getNotificationsCollection().update(selector, {$set: {hidden: true}});
