@@ -42,7 +42,7 @@ To change the animation speed or the change other default notification settings 
 
 Notifications()
 ---------------
-Creates an instance of Notifications
+The singleton instance of Notifications
 
 
 addNotification(title, message, \[options={}\])
