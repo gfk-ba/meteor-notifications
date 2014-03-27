@@ -4,7 +4,7 @@
 
 notifications - Add reactive notifications to your meteor application
 
-See example @ [meteor.com]http://notifications-example.meteor.com/
+See example @ [meteor.com](http://notifications-example.meteor.com/)
 
 ## Installation
 
@@ -20,9 +20,9 @@ $ mrt add notifications
 
 To create a notification
 
-First add the following to the template you want to be the parent for your notifications
+First add the following to the template you want to be the parent for your notifications.
 ``` handlebars
-{{notifications}}
+{{> notifications}}
 ```
 
 
@@ -37,6 +37,18 @@ Notifications.success('title', 'message');
 ### Changing default settings
 
 To change the animation speed or the change other default notification settings change the Notifications.defaultOptions object.
+
+### Restyling the notifications
+To restyle the notifications check the [styleSheet](https://github.com/gfk-ba/meteor-notifications/blob/master/notifications.less)
+And create your own stylesheet in your application that overrides the classes defined in the bundled style. For instance if you want to make the success notifications red you would add the following:
+
+``` css
+li.notification {
+    &.success {
+        background-color: #F00;
+    }
+}
+```
 
 ### Api documentation
 
