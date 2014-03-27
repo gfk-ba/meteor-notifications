@@ -40,6 +40,7 @@ var constructor = (function() {
      * @returns {*}
      */
     Notifications.prototype.error = function (title, message, options) {
+        options = options || {};
         options.type = this.TYPES.ERROR;
         return this.addNotification(title, message, options);
     };
@@ -52,6 +53,7 @@ var constructor = (function() {
      * @returns {*}
      */
     Notifications.prototype.warn = function (title, message, options) {
+        options = options || {};
         options.type = this.TYPES.WARNING;
         return this.addNotification(title, message, options);
     };
@@ -64,6 +66,7 @@ var constructor = (function() {
      * @returns {*}
      */
     Notifications.prototype.info = function (title, message, options) {
+        options = options || {};
         options.type = this.TYPES.INFO;
         return this.addNotification(title, message, options);
     };
@@ -76,6 +79,7 @@ var constructor = (function() {
      * @returns {*}
      */
     Notifications.prototype.success = function (title, message, options) {
+        options = options || {};
         options.type = this.TYPES.SUCCESS;
         return this.addNotification(title, message, options);
     };
