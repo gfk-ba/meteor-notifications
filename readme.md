@@ -3,6 +3,7 @@
 # Meteor notifications
 
 notifications - Add reactive notifications to your meteor application
+Makes use of meteor's rendering system, not just a jQuery/bootstrap wrapper.
 
 See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.com](https://github.com/gfk-ba/meteor-notifications-example)
 
