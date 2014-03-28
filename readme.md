@@ -4,7 +4,7 @@
 
 notifications - Add reactive notifications to your meteor application
 
-See example @ [meteor.com](http://notifications-example.meteor.com/)
+See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.com](https://github.com/gfk-ba/meteor-notifications-example)
 
 ## Installation
 
