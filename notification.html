@@ -1,11 +1,12 @@
 <template name="notification">
-    {{#constant}}
-		 <li class="notification {{notificationColor type}}">
-			 <div class="title">{{title}}</div>
-			 <div class="message">{{message}}</div>
-             {{#if userCloseable}}
-					 <div class="closeButton">&times;</div>
-             {{/if}}
-		 </li>
-    {{/constant}}
+     <li class="notification {{notificationColor type}}">
+         <div class="title">{{title}}</div>
+         <div class="message">{{message}}</div>
+         {{#if hidden}}
+             {{hide}}
+         {{/if}}
+         {{#if userCloseable}}
+                 <div class="closeButton">&times;</div>
+         {{/if}}
+     </li>
 </template>

@@ -3,16 +3,18 @@ Template.notification.notificationColor = function(notificationType) {
 };
 
 Template.notification.rendered = function () {
-    var self = this,
-        notificationElement = $(this.find('li'));
+    var domNode = this.find('li');
 
-    if (this.data.hidden) {
-        notificationElement.animate(this.data.hideAnimationProperties, {duration: this.data.animationSpeed, complete: function () {
-            Notifications.remove({_id: self.data._id});
-        }});
-    } else {
-        notificationElement.fadeIn({duration: this.data.animationSpeed});
-    }
+    domNode.id = this.data._id;
+
+    $(domNode).fadeIn({duration: this.data.animationSpeed});
+};
+
+Template.notification.hide = function () {
+    var self = this;
+    $('#' + this._id).animate(this.hideAnimationProperties, {duration: this.animationSpeed, complete: function () {
+        Notifications.remove({_id: self._id});
+    }});
 };
 
 Template.notification.events = {

@@ -7,6 +7,8 @@ Makes use of meteor's rendering system, not just a jQuery/bootstrap wrapper.
 
 See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.com](https://github.com/gfk-ba/meteor-notifications-example)
 
+As of version v0.4.6 this package only works with blaze if you are still using spark get v0.4.4
+
 ## Installation
 
 Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
