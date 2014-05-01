@@ -10,8 +10,8 @@ var constructor = (function() {
 
     /***
      * Adds a notification
-     * @param {string} title The title of the notification
-     * @param {string} message The message of the notification
+     * @param {string} title of the notification
+     * @param {string} message of the notification
      * @param {object} [options={}] Options object to use for notification
      */
     Notifications.prototype.addNotification = function (title, message, options) {
@@ -34,8 +34,8 @@ var constructor = (function() {
 
     /***
      * Wraps addNotification, sets type to error
-     * @param title The title of the notification
-     * @param message The message of the notification
+     * @param {String} title of the notification
+     * @param {String} message of the notification
      * @param {object} [options={}] Options object to use for notification
      * @returns {*}
      */
@@ -47,8 +47,8 @@ var constructor = (function() {
 
     /***
      * Wraps addNotification, sets type to warning
-     * @param title The title of the notification
-     * @param message The message of the notification
+     * @param {String} title of the notification
+     * @param {String} message of the notification
      * @param {object} [options={}] Options object to use for notification
      * @returns {*}
      */
@@ -60,8 +60,8 @@ var constructor = (function() {
 
     /***
      * Wraps addNotification, sets type to info
-     * @param title The title of the notification
-     * @param message The message of the notification
+     * @param {String} title of the notification
+     * @param {String} message of the notification
      * @param {object} [options={}] Options object to use for notification
      * @returns {*}
      */
@@ -73,8 +73,8 @@ var constructor = (function() {
 
     /***
      * Wraps addNotification, sets type to success
-     * @param title The title of the notification
-     * @param message The message of the notification
+     * @param {String} title of the notification
+     * @param {String} message of the notification
      * @param {object} [options={}] Options object to use for notification
      * @returns {*}
      */
@@ -120,7 +120,7 @@ var constructor = (function() {
 
     /***
      * Returns the timestamp of the notification from the notificationsCollection that is first to expire
-     * @returns {string} the first to expire timestamp
+     * @returns {string} first to expire timestamp
      * @private
      */
     Notifications.prototype._getFirstExpiredTimestamp = function () {
@@ -152,8 +152,8 @@ var constructor = (function() {
 
     /***
      * Gets the class containing the color for the notification
-     * @param notificationType
-     * @returns {string} The classname to use for the notification
+     * @param {String} notificationType
+     * @returns {string} classname to use for the notification
      */
     Notifications.prototype.getNotificationClass = function (notificationType) {
         var notificationClass;
@@ -169,7 +169,7 @@ var constructor = (function() {
 
     /***
      * Adds the hidden property to the notifications matching the selector
-     * @param {object}  mongo selector to find the notification with
+     * @param {object} mongo selector to find the notification with
      */
     Notifications.prototype.hide = function (selector) {
         this._getNotificationsCollection().update(selector, {$set: {hidden: true}});

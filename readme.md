@@ -16,7 +16,6 @@ Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/met
 ``` sh
 $ mrt add notifications
 ```
-
 ## API
 
 ### Basics
@@ -53,114 +52,91 @@ li.notification {
 }
 ```
 
-### Api documentation
+## Notifications()
 
-Notifications()
----------------
-The singleton instance of Notifications
+Creates an instance of Notifications
 
+## addNotification(title, message, [options={}])
 
-addNotification(title, message, \[options={}\])
------------------------------------------------
 Adds a notification
 
+### Params:
 
-**Parameters**
+* **string** *title* of the notification
+* **string** *message* of the notification
+* **object** *[options={}]* Options object to use for notification
 
-**title**:  *string*,  The title of the notification
+## error(title, message, [options={}])
 
-**message**:  *string*,  The message of the notification
-
-**[options={}]**:  *object*,  Options object to use for notification
-        *type* : use one of the values from Notifications.TYPE
-        *userCloseable*: enable or disable the user from closing the notifications
-        *timeout*: After how many ms the notification should disappear (0 is never)
-        *animationSpeed*: Duration of the animation in ms
-
-
-error(title, message, \[options={}\])
--------------------------------------
 Wraps addNotification, sets type to error
 
+### Params:
 
-**Parameters**
+* **String** *title* of the notification
+* **String** *message* of the notification
+* **object** *[options={}]* Options object to use for notification
 
-**title**,  The title of the notification
+## warn(title, message, [options={}])
 
-**message**,  The message of the notification
-
-**[options={}]**:  *object*,  Options object to use for notification
-
-warn(title, message, \[options={}\])
-------------------------------------
 Wraps addNotification, sets type to warning
 
+### Params:
 
-**Parameters**
+* **String** *title* of the notification
+* **String** *message* of the notification
+* **object** *[options={}]* Options object to use for notification
 
-**title**,  The title of the notification
+## info(title, message, [options={}])
 
-**message**,  The message of the notification
-
-**[options={}]**:  *object*,  Options object to use for notification
-
-info(title, message, \[options={}\])
-------------------------------------
 Wraps addNotification, sets type to info
 
+### Params:
 
-**Parameters**
+* **String** *title* of the notification
+* **String** *message* of the notification
+* **object** *[options={}]* Options object to use for notification
 
-**title**,  The title of the notification
+## success(title, message, [options={}])
 
-**message**,  The message of the notification
-
-**[options={}]**:  *object*,  Options object to use for notification
-
-success(title, message, \[options={}\])
----------------------------------------
 Wraps addNotification, sets type to success
 
+### Params:
 
-**Parameters**
+* **String** *title* of the notification
+* **String** *message* of the notification
+* **object** *[options={}]* Options object to use for notification
 
-**title**,  The title of the notification
+## getNotificationClass(notificationType)
 
-**message**,  The message of the notification
-
-**[options={}]**:  *object*,  Options object to use for notification
-
-getNotificationClass(notificationType)
---------------------------------------
 Gets the class containing the color for the notification
 
+### Params:
 
-**Parameters**
+* **String** *notificationType*
 
-**notificationType**,
+## hide(mongo)
 
-
-**Returns**
-
-*string*,  The classname to use for the notification
-
-hide(selector)
----------
 Adds the hidden property to the notifications matching the selector
 
+### Params:
 
-**Parameters**
+* **object** *mongo* selector to find the notification with
 
-**selector**:  *object*,  mongo selector to find the notification with
+## remove()
 
-remove(selector)
-----------------
 Removes the notifications matching the selector
 
+### Params:
 
-**Parameters**
+* **selector** **
 
-**selector**,
+## TYPES
+
+Stores constants for the different notification types
+
+## defaultOptions
+
+Object with the default options for the notifications
 
 ##Note
 I already integrated the code in our application before creating the package. I partially converted the jasmine tests to tinytest but my solution
