@@ -142,7 +142,7 @@ var constructor = (function() {
 
         if (firstExpiration) {
             this._notificationTimeout = Meteor.setTimeout(function () {
-                self.hide({expires: {$lte: firstExpiration}});
+                self.remove({expires: {$lte: firstExpiration}});
                 self._createTimeout();
             }, firstExpiration - new Date().getTime());
         } else {
@@ -165,14 +165,6 @@ var constructor = (function() {
         });
 
         return notificationClass;
-    };
-
-    /***
-     * Adds the hidden property to the notifications matching the selector
-     * @param {object} mongo selector to find the notification with
-     */
-    Notifications.prototype.hide = function (selector) {
-        this._getNotificationsCollection().update(selector, {$set: {hidden: true}});
     };
 
     /***

@@ -1,26 +1,34 @@
+'use strict';
+
 Template.notification.notificationColor = function(notificationType) {
     return Notifications.getNotificationClass(notificationType);
 };
 
 Template.notification.rendered = function () {
-    var domNode = this.find('li');
+    var domNode = this.find('li'),
+        self = this;
 
-    domNode.id = this.data._id;
+    $(domNode).fadeIn({duration: this.data.animationSpeed})
+        .promise()
+        .done(function () {
+            $(this).removeClass('hidden');
+        });
 
-    $(domNode).fadeIn({duration: this.data.animationSpeed});
-};
-
-Template.notification.hide = function () {
-    var self = this;
-    $('#' + this._id).animate(this.hideAnimationProperties, {duration: this.animationSpeed, complete: function () {
-        Notifications.remove({_id: self._id});
-    }});
+    if(!this.firstNode.parentNode._uihooks) {
+        this.firstNode.parentNode._uihooks = {
+            removeElement: function (node) {
+                $(node).animate(self.data.hideAnimationProperties, {duration: self.data.animationSpeed, complete: function () {
+                    $(node).remove();
+                }});
+            }
+        };
+    }
 };
 
 Template.notification.events = {
     'click': function () {
         if (this.userCloseable) {
-            Notifications.hide({_id: this._id});
+            Notifications.remove(this._id);
         }
     }
 };
