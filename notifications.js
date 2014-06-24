@@ -218,3 +218,27 @@ Notifications = new constructor();
 Template.notifications.notifications = function() {
     return Notifications._getNotificationsCollection().find();
 };
+
+Template.notifications.rendered = function () {
+    this.firstNode._uihooks = {
+        insertElement: function (node, next) {
+            var data = UI.getElementData(node);
+
+            $(node)
+                .addClass('hidden')
+                .insertBefore(next)
+                .fadeIn({duration: data.animationSpeed})
+                .promise()
+                .done(function () {
+                    $(this).removeClass('hidden');
+                });
+        },
+        removeElement: function (node) {
+            var data = UI.getElementData(node);
+
+            $(node).animate(data.hideAnimationProperties, {duration: data.animationSpeed, complete: function () {
+                $(node).remove();
+            }});
+        }
+    };
+};
