@@ -10,7 +10,7 @@ See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.c
 ## Versions
 |Meteor Version|Notifications version|
 | ------------- |:-------------:| -----:|
-|Blaze 0.2 (Meteor 0.8.2)|v0.5.0 and above|
+|Blaze 0.2 (Meteor 0.8.2+)|v0.5.0 and above|
 |Blaze 0.1|v0.4.5 and above in v0.4.*|
 |Spark|v0.4.4 and below|
 
