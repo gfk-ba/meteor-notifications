@@ -20,7 +20,6 @@ li.notification {
     margin: 10px auto 0;
     color: #fff;
     position: relative;
-    display: none;
     a {
         &, &:hover, &:visited {
             color: white;
@@ -58,4 +57,8 @@ li.notification {
         cursor: pointer;
         font-size: 20px;
     }
+}
+
+li.notification.hidden {
+  display: none;
 }

@@ -2,7 +2,7 @@ Package.describe({
   summary: 'Notifications - Add reactive notifications to any meteor template'
 });
 
-Package.on_use(function (api, where) {
+Package.on_use(function (api) {
     api.use(['templating', 'underscore', 'less']);
 
     api.add_files('notifications.less', ['client']);

@@ -1,10 +1,7 @@
 <template name="notification">
-     <li class="notification {{notificationColor type}}">
+     <li class="notification hidden {{notificationColor type}}">
          <div class="title">{{title}}</div>
          <div class="message">{{message}}</div>
-         {{#if hidden}}
-             {{hide}}
-         {{/if}}
          {{#if userCloseable}}
                  <div class="closeButton">&times;</div>
          {{/if}}

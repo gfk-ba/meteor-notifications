@@ -114,14 +114,6 @@ Gets the class containing the color for the notification
 
 * **String** *notificationType*
 
-## hide(mongo)
-
-Adds the hidden property to the notifications matching the selector
-
-### Params:
-
-* **object** *mongo* selector to find the notification with
-
 ## remove()
 
 Removes the notifications matching the selector
