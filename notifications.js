@@ -225,12 +225,12 @@ Template.notifications.rendered = function () {
             var data = UI.getElementData(node);
 
             $(node)
-                .addClass('hidden')
+                .addClass('notificationHidden')
                 .insertBefore(next)
                 .fadeIn({duration: data.animationSpeed})
                 .promise()
                 .done(function () {
-                    $(this).removeClass('hidden');
+                    $(this).removeClass('notificationHidden');
                 });
         },
         removeElement: function (node) {
