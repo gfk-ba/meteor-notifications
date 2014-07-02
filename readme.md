@@ -67,9 +67,13 @@ Adds a notification
 
 ### Params:
 
-* **string** *title* of the notification
-* **string** *message* of the notification
-* **object** *[options={}]* Options object to use for notification
+* **String** *title* of the notification
+* **String** *message* of the notification
+* **Object** *[options={}]* Options object to use for notification
+* **String** *[options.type=defaultOptions.type]* the type of the notification
+* **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
+* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## error(title, message, [options={}])
 
@@ -79,7 +83,10 @@ Wraps addNotification, sets type to error
 
 * **String** *title* of the notification
 * **String** *message* of the notification
-* **object** *[options={}]* Options object to use for notification
+* **Object** *[options={}]* Options object to use for notification
+* **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
+* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## warn(title, message, [options={}])
 
@@ -89,7 +96,10 @@ Wraps addNotification, sets type to warning
 
 * **String** *title* of the notification
 * **String** *message* of the notification
-* **object** *[options={}]* Options object to use for notification
+* **Object** *[options={}]* Options object to use for notification
+* **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
+* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## info(title, message, [options={}])
 
@@ -99,7 +109,10 @@ Wraps addNotification, sets type to info
 
 * **String** *title* of the notification
 * **String** *message* of the notification
-* **object** *[options={}]* Options object to use for notification
+* **Object** *[options={}]* Options object to use for notification
+* **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
+* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## success(title, message, [options={}])
 
@@ -109,7 +122,10 @@ Wraps addNotification, sets type to success
 
 * **String** *title* of the notification
 * **String** *message* of the notification
-* **object** *[options={}]* Options object to use for notification
+* **Object** *[options={}]* Options object to use for notification
+* **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
+* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## getNotificationClass(notificationType)
 
