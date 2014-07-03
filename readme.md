@@ -43,7 +43,17 @@ Notifications.success('title', 'message');
 
 ### Changing default settings
 
-To change the animation speed or the change other default notification settings change the Notifications.defaultOptions object.
+To change the animation speed or the change other default notification settings change the Notifications.defaultOptions object. 
+
+For example you can set the default timeout for all notifications like so:
+
+``` javascript
+Meteor.startup(function () {
+    _.extend(Notifications.defaultOptions, {
+        timeout: 5000
+    });
+});
+```
 
 ### Restyling the notifications
 To restyle the notifications check the [styleSheet](https://github.com/gfk-ba/meteor-notifications/blob/master/notifications.less)
