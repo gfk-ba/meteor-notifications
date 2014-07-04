@@ -3,3 +3,6 @@
       - "0.10"
       before_install:
       - "curl -L http://git.io/ejPSng | /bin/sh"
+      branches:
+        only:
+          - master

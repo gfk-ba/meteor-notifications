@@ -17,8 +17,6 @@ Package.on_use(function (api) {
 });
 
 Package.on_test(function (api) {
-    api.use(['notifications', 'tinytest', 'underscore']);
-
-    api.add_files('sinon-1.9.0.js', ['client']);
+    api.use(['notifications', 'munit', 'underscore', 'sinon', 'chai']);
     api.add_files('notifications_tests.js', ['client']);
 });
