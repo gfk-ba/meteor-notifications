@@ -156,10 +156,38 @@ var constructor = (function() {
         var self = this;
         var firstExpiration = this._getFirstExpiredTimestamp();
 
-        if (firstExpiration) {
+		if (firstExpiration) {
             this._notificationTimeout = Meteor.setTimeout(function () {
-                self.remove({expires: {$lte: firstExpiration}});
-                self._createTimeout();
+				/*
+					The following code is a workaround for meteor bug #2369 (https://github.com/meteor/meteor/issues/2369)
+
+					Faking a click allows the use of _templateInstance to get the data associated with the notification
+					And for now fixes the notifications package for meteor 0.8.3
+
+					self.remove({expires: {$lte: firstExpiration}});
+				 */
+				//TODO: Remove this when meteor issue #2369 gets fixed
+				var notificationsCollection = self._getNotificationsCollection(),
+						notifications = notificationsCollection.find({expires: {$lte: firstExpiration}}),
+						idList = [];
+
+				notifications.forEach(function (n) {
+					idList.push(n._id);
+				});
+
+				var notificationNodes = _.filter($('.notification'), function (item) {
+					return _.indexOf(idList, $(item).data('_id')) > -1;
+				});
+
+				_.each(notificationNodes, function (n) {
+					$(n).click();
+				});
+
+				//Makes sure no new timer is made, because the click event takes a few ms to actually remove the notification
+				notificationsCollection.update({expires: {$lte: firstExpiration}}, {$unset: {expires: 1}}, {multi:true}, function () {
+					self._createTimeout();
+				});
+
             }, firstExpiration - new Date().getTime());
         } else {
             this._notificationTimeout = undefined;
@@ -250,7 +278,13 @@ Template.notifications.rendered = function () {
                 });
         },
         removeElement: function (node) {
-            var data = UI.getElementData(node);
+			var data = UI._templateInstance().data;
+
+			/*
+				For some reason in meteor 0.8.3 the data is already null when removeElement get's called
+				And for even weirder reasons the _templateInstance method returns the instance of the to be removed
+				templateInstance with the proper data.
+			 */
 
             $(node).animate(data.hideAnimationProperties, {duration: data.animationSpeed, complete: function () {
                 $(node).remove();
