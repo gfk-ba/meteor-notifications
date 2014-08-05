@@ -11,7 +11,7 @@ Template.notification.rendered = function () {
 
 Template.notification.events = {
     'click': function () {
-        if (this.userCloseable) {
+        if (this.userCloseable || this.expires < new Date()) {
             Notifications.remove(this._id);
         }
     }
