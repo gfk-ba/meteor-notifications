@@ -3,9 +3,13 @@ var constructor = (function() {
      * Creates an instance of Notifications
      * @constructor
      */
-    function Notifications() {
+    function Notifications(settings) {
+		settings = settings || {};
+		_.defaults(settings, this.defaultSettings);
+
         this._notificationsCollection = new Meteor.Collection(null);
         this._notificationTimeout = undefined;
+		this.settings = settings;
     }
 
     /***
@@ -27,8 +31,7 @@ var constructor = (function() {
         notification.message = message;
         notification.type = options.type;
         notification.userCloseable = options.userCloseable;
-        notification.animationSpeed = options.animationSpeed;
-        notification.hideAnimationProperties = options.hideAnimationProperties;
+
         if (options.timeout) {
             notification.expires = new Date().getTime() + options.timeout;
         }
@@ -158,36 +161,8 @@ var constructor = (function() {
 
 		if (firstExpiration) {
             this._notificationTimeout = Meteor.setTimeout(function () {
-				/*
-					The following code is a workaround for meteor bug #2369 (https://github.com/meteor/meteor/issues/2369)
-
-					Faking a click allows the use of _templateInstance to get the data associated with the notification
-					And for now fixes the notifications package for meteor 0.8.3
-
-					self.remove({expires: {$lte: firstExpiration}});
-				 */
-				//TODO: Remove this when meteor issue #2369 gets fixed
-				var notificationsCollection = self._getNotificationsCollection(),
-						notifications = notificationsCollection.find({expires: {$lte: firstExpiration}}),
-						idList = [];
-
-				notifications.forEach(function (n) {
-					idList.push(n._id);
-				});
-
-				var notificationNodes = _.filter($('.notification'), function (item) {
-					return _.indexOf(idList, $(item).data('_id')) > -1;
-				});
-
-				_.each(notificationNodes, function (n) {
-					$(n).click();
-				});
-
-				//Makes sure no new timer is made, because the click event takes a few ms to actually remove the notification
-				notificationsCollection.update({expires: {$lte: firstExpiration}}, {$unset: {expires: 1}}, {multi:true}, function () {
-					self._createTimeout();
-				});
-
+				self.remove({expires: {$lte: firstExpiration}});
+				self._createTimeout();
             }, firstExpiration - new Date().getTime());
         } else {
             this._notificationTimeout = undefined;
@@ -243,16 +218,19 @@ var constructor = (function() {
     Notifications.prototype.defaultOptions = {
         type: Notifications.prototype.TYPES.INFO,
         userCloseable: true,
-        timeout: 0,
-        animationSpeed: 400,
-        hideAnimationProperties: {
-            height: 0,
-            opacity: 0,
-            paddingTop: 0,
-            paddingBottom: 0,
-            marginTop: 0
-        }
+        timeout: 0
     };
+
+	Notifications.prototype.defaultSettings = {
+		hideAnimationProperties: {
+			height: 0,
+			opacity: 0,
+			paddingTop: 0,
+			paddingBottom: 0,
+			marginTop: 0
+		},
+		animationSpeed: 400
+	};
 
     return Notifications;
 })();
@@ -271,22 +249,15 @@ Template.notifications.rendered = function () {
             $(node)
                 .addClass('notificationHidden')
                 .insertBefore(next)
-                .fadeIn({duration: data.animationSpeed})
+                .fadeIn({duration: Notifications.settings.animationSpeed})
                 .promise()
                 .done(function () {
                     $(this).removeClass('notificationHidden');
                 });
         },
         removeElement: function (node) {
-			var data = UI._templateInstance().data;
-
-			/*
-				For some reason in meteor 0.8.3 the data is already null when removeElement get's called
-				And for even weirder reasons the _templateInstance method returns the instance of the to be removed
-				templateInstance with the proper data.
-			 */
-
-            $(node).animate(data.hideAnimationProperties, {duration: data.animationSpeed, complete: function () {
+			var settings = Notifications.settings;
+            $(node).animate(settings.hideAnimationProperties, {duration: settings.animationSpeed, complete: function () {
                 $(node).remove();
             }});
         }

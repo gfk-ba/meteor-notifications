@@ -58,6 +58,7 @@ var addNotification = {
                 expected.message = testMessage;
                 expected.type = instance.defaultOptions.type;
                 expected.userCloseable = instance.defaultOptions.userCloseable;
+				
                 delete expected.timeout;
 
                 instance.addNotification(testTitle, testMessage);
@@ -330,40 +331,39 @@ var _createTimeout = {
                 instance._createTimeout();
                 expect(instance._notificationTimeout).to.not.equal(undefined);
             }
-        }
-		//TODO: Uncomment tests when meteor issue #2369 gets fixed
-//        {
-//            name: 'Should remove the notification when the timeout expires',
-//            type: 'client',
-//            func: function () {
-//				timedNotification.expires = (new Date().getTime()) + 2000;
-//				notificationsCollection.insert(timedNotification);
-//
-//                var collectionSize = notificationsCollection.find().count();
-//                instance._createTimeout();
-//                clock.tick(1999);
-//                expect(notificationsCollection.find().count()).to.equal(collectionSize);
-//                clock.tick(2000);
-//
-//                expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
-//            }
-//        },
-//		{
-//			name: 'Called with very short timeout - Should remove the notification when the timeout expires',
-//			type: 'client',
-//			func: function () {
-//				timedNotification.expires = (new Date().getTime()) + 10;
-//				notificationsCollection.insert(timedNotification);
-//
-//				var collectionSize = notificationsCollection.find().count();
-//				instance._createTimeout();
-//				clock.tick(9);
-//				expect(notificationsCollection.find().count()).to.equal(collectionSize);
-//				clock.tick(10);
-//
-//				expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
-//			}
-//		}
+        },
+        {
+            name: 'Should remove the notification when the timeout expires',
+            type: 'client',
+            func: function () {
+				timedNotification.expires = (new Date().getTime()) + 2000;
+				notificationsCollection.insert(timedNotification);
+
+                var collectionSize = notificationsCollection.find().count();
+                instance._createTimeout();
+                clock.tick(1999);
+                expect(notificationsCollection.find().count()).to.equal(collectionSize);
+                clock.tick(2000);
+
+                expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
+            }
+        },
+		{
+			name: 'Called with very short timeout - Should remove the notification when the timeout expires',
+			type: 'client',
+			func: function () {
+				timedNotification.expires = (new Date().getTime()) + 10;
+				notificationsCollection.insert(timedNotification);
+
+				var collectionSize = notificationsCollection.find().count();
+				instance._createTimeout();
+				clock.tick(9);
+				expect(notificationsCollection.find().count()).to.equal(collectionSize);
+				clock.tick(10);
+
+				expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
+			}
+		}
     ]
 };
 
