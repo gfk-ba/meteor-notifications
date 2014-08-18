@@ -13,6 +13,7 @@ See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.c
 ## Versions
 |Meteor Version|Notifications version|
 | ------------- |:-------------:| -----:|
+|Meteor 0.9+|v1.0.0 and above|
 |Blaze 0.2 (Meteor 0.8.2+)|v0.5.0 and above|
 |Blaze 0.1|v0.4.5 and above in v0.4.*|
 |Spark|v0.4.4 and below|
@@ -21,9 +22,18 @@ See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.c
 
 Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
 
+*Meteor 0.8.2 and below:*
+
 ``` sh
 $ mrt add notifications
 ```
+
+*Meteor 0.9.0 and above*
+
+``` sh
+$ meteor add gfk:notifications
+```
+
 ## API
 
 ### Basics
