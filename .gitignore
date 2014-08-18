@@ -1,2 +1,5 @@
 .build*
 /packages/
+/Makefile
+/phantom_runner.js
+/start_test.js
