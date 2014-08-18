@@ -7,7 +7,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-//	api.versionsFrom('METEOR-CORE@0.9.0-rc9');
+	api.versionsFrom('0.9.0-rc9');
 	api.use([
 		'templating@1.0.0',
 		'underscore@1.0.0',
@@ -28,8 +28,9 @@ Package.onTest(function(api) {
 		'tinytest@1.0.0',
 		'underscore@1.0.0',
 		'juanlavaina:chai@0.1.5',
-		'juanlavaina:sinon@0.1.5'
-	]);
-	api.use('gfk:notifications@' + VERSION, 'client');
+		'juanlavaina:sinon@0.1.5',
+		'gfk:notifications@' + VERSION
+	], 'client');
+
 	api.addFiles('notifications_tests.js', ['client']);
 });
