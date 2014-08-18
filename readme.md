@@ -30,7 +30,7 @@ Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/met
 $ meteor add gfk:notifications
 ```
 
-*Meteor 0.8.2 and below:*
+*Meteor 0.8 and below use meteorite:*
 
 ``` sh
 $ mrt add notifications
