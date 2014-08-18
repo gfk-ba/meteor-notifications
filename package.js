@@ -1,22 +1,33 @@
 Package.describe({
-  summary: 'Notifications - Add reactive notifications to any meteor template'
+	summary: 'Notifications - Add reactive notifications to any meteor template',
+	version: '1.0.0',
+	git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
-Package.on_use(function (api) {
-    api.use(['templating', 'underscore', 'less']);
+Package.onUse(function(api) {
+//	api.versionsFrom('METEOR-CORE@0.9.0-rc9');
+	api.use([
+		'templating@1.0.0',
+		'underscore@1.0.0',
+		'less@1.0.0'
+	], 'client');
 
-    api.add_files('notifications.less', ['client']);
-    api.add_files('notifications.html', ['client']);
-    api.add_files('notification.html', ['client']);
-    api.add_files('notifications.js', ['client']);
-    api.add_files('notification.js', ['client']);
+	api.addFiles('notifications.less', ['client']);
+	api.addFiles('notifications.html', ['client']);
+	api.addFiles('notification.html', ['client']);
+	api.addFiles('notifications.js', ['client']);
+	api.addFiles('notification.js', ['client']);
 
-
-    api.export && api.export('Notifications', ['client']);
-
+	api.export && api.export('Notifications', ['client']);
 });
 
-Package.on_test(function (api) {
-    api.use(['notifications', 'munit', 'underscore', 'sinon', 'chai']);
-    api.add_files('notifications_tests.js', ['client']);
+Package.onTest(function(api) {
+	api.use([
+		'tinytest@1.0.0',
+		'underscore@1.0.0',
+		'juanlavaina:chai@0.1.5',
+		'juanlavaina:sinon@0.1.5'
+	]);
+	api.use('gfk:notifications', 'client');
+	api.addFiles('notifications_tests.js', ['client']);
 });
