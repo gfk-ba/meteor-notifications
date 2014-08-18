@@ -13,25 +13,27 @@ See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.c
 ## Versions
 |Meteor Version|Notifications version|
 | ------------- |:-------------:| -----:|
-|Meteor 0.9+|v1.0.0 and above|
-|Blaze 0.2 (Meteor 0.8.2+)|v0.5.0 and above|
-|Blaze 0.1|v0.4.5 and above in v0.4.*|
-|Spark|v0.4.4 and below|
+|Meteor 0.9.0|v1.0.0 and above|
+|Meteor 0.8.2+ (Blaze 0.2)|v0.5.0 and above|
+|Meteor 0.8.0+ (Blaze 0.1)|v0.4.5 and above in v0.4.*|
+|Meteor 0.7.0+ (Spark)|v0.4.4 and below|
+
+*Note: untested on versions before 0.7.0*
 
 ## Installation
 
 Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
 
+*Meteor 0.9.0 and above:*
+
+``` sh
+$ meteor add gfk:notifications
+```
+
 *Meteor 0.8.2 and below:*
 
 ``` sh
 $ mrt add notifications
-```
-
-*Meteor 0.9.0 and above*
-
-``` sh
-$ meteor add gfk:notifications
 ```
 
 ## API
@@ -56,9 +58,21 @@ Notifications.success('title', 'message');
 
 ### Changing default settings
 
-To change the animation speed or the change other default notification settings change the Notifications.defaultOptions object. 
+To change the animation speed or hideAnimationProperties, you need to change the Notifications.settings object.
 
-For example you can set the default timeout for all notifications like so:
+**Example:**
+
+``` javascript
+Meteor.startup(function () {
+    Notifications.settings.animationSpeed = 500;
+});
+```
+
+
+
+Default options to be used for each notification can be changed by changing the Notifications.defaultOptions object.
+
+**Example:**
 
 ``` javascript
 Meteor.startup(function () {
@@ -95,8 +109,6 @@ Adds a notification
 * **Object** *[options={}]* Options object to use for notification
 * **String** *[options.type=defaultOptions.type]* the type of the notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
-* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
-* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## error(title, message, [options={}])
 
@@ -108,8 +120,6 @@ Wraps addNotification, sets type to error
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
-* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
-* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## warn(title, message, [options={}])
 
@@ -121,8 +131,6 @@ Wraps addNotification, sets type to warning
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
-* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
-* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## info(title, message, [options={}])
 
@@ -134,8 +142,6 @@ Wraps addNotification, sets type to info
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
-* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
-* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## success(title, message, [options={}])
 
@@ -147,8 +153,6 @@ Wraps addNotification, sets type to success
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
-* **Number** *[options.animationSpeed=defaultOptions.animationSpeed]* The speed of the animation
-* **Object** *[options.hideAnimationProperties=defaultOptions.hideAnimationProperties]* the hide animation properties
 
 ## getNotificationClass(notificationType)
 
@@ -173,7 +177,3 @@ Stores constants for the different notification types
 ## defaultOptions
 
 Object with the default options for the notifications
-
-##Note
-I already integrated the code in our application before creating the package. I partially converted the jasmine tests to tinytest but my solution
-Is really horrible to write and read. So i'm just gonna wait till meteorite packages can use different frameworks and use the jasmine tests
