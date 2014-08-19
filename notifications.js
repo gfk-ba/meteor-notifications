@@ -1,3 +1,5 @@
+'use strict';
+
 var constructor = (function() {
     /***
      * Creates an instance of Notifications
