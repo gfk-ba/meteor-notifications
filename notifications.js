@@ -19,8 +19,6 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {String}  [options.type=defaultOptions.type] the type of the notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
-     * @param {Number}  [options.animationSpeed=defaultOptions.animationSpeed] The speed of the animation
-     * @param {Object}  [options.hideAnimationProperties=defaultOptions.hideAnimationProperties] the hide animation properties
      */
     Notifications.prototype.addNotification = function (title, message, options) {
         options = options || {};
@@ -45,8 +43,6 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
-     * @param {Number}  [options.animationSpeed=defaultOptions.animationSpeed] The speed of the animation
-     * @param {Object}  [options.hideAnimationProperties=defaultOptions.hideAnimationProperties] the hide animation properties
      * @returns {*}
      */
     Notifications.prototype.error = function (title, message, options) {
@@ -61,8 +57,6 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
-     * @param {Number}  [options.animationSpeed=defaultOptions.animationSpeed] The speed of the animation
-     * @param {Object}  [options.hideAnimationProperties=defaultOptions.hideAnimationProperties] the hide animation properties
      * @returns {*}
      */
     Notifications.prototype.warn = function (title, message, options) {
@@ -77,8 +71,6 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
-     * @param {Number}  [options.animationSpeed=defaultOptions.animationSpeed] The speed of the animation
-     * @param {Object}  [options.hideAnimationProperties=defaultOptions.hideAnimationProperties] the hide animation properties
      * @returns {*}
      */
     Notifications.prototype.info = function (title, message, options) {
@@ -93,8 +85,6 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
-     * @param {Number}  [options.animationSpeed=defaultOptions.animationSpeed] The speed of the animation
-     * @param {Object}  [options.hideAnimationProperties=defaultOptions.hideAnimationProperties] the hide animation properties
      * @returns {*}
      */
     Notifications.prototype.success = function (title, message, options) {
