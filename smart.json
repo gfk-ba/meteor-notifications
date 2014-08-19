@@ -1,0 +1,8 @@
+{
+	"packages": {
+		"gfk:notifications": {
+			"path": "."
+		},
+	    "munit": { }
+	}
+}

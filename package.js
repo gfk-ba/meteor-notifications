@@ -29,7 +29,10 @@ Package.onTest(function(api) {
 		'underscore@1.0.0',
 		'juanlavaina:chai@0.1.5',
 		'juanlavaina:sinon@0.1.5',
-		'gfk:notifications@' + VERSION
+		'gfk:notifications',
+		'munit',
+		'chai',
+		'sinon'
 	], 'client');
 
 	api.addFiles('notifications_tests.js', ['client']);
