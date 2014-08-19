@@ -234,12 +234,11 @@ Template.notifications.notifications = function() {
 Template.notifications.rendered = function () {
     this.firstNode._uihooks = {
         insertElement: function (node, next) {
-            var data = UI.getElementData(node);
-
-            $(node)
+			var settings = Notifications.settings;
+			$(node)
                 .addClass('notificationHidden')
                 .insertBefore(next)
-                .fadeIn({duration: Notifications.settings.animationSpeed})
+                .fadeIn({duration: settings.animationSpeed})
                 .promise()
                 .done(function () {
                     $(this).removeClass('notificationHidden');
