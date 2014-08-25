@@ -7,7 +7,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-	api.versionsFrom('0.9.0-rc9');
+	api.versionsFrom('METEOR@0.9.0-rc9');
 	api.use([
 		'templating@1.0.0',
 		'underscore@1.0.0',
