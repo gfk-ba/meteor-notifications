@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict'; reinstate when https://github.com/meteor/meteor/issues/2437 is fixed
 
 var constructor = (function() {
     /***
