@@ -2,7 +2,6 @@
       node_js:
       - "0.10"
       before_install:
-      - "./pre_install.sh"
       - "curl -L https://raw.githubusercontent.com/marcodejongh/travis-ci-meteor-packages/packaging_preview/configure.sh | /bin/sh"
       branches:
         only:
