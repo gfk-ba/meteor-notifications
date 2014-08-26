@@ -3,6 +3,6 @@
 	"description": "Add reactive notifications to your meteor application",
 	"homepage": "https://github.com/gfk-ba/meteor-notifications",
 	"author": "Marco de Jongh <m.jongh88@gmail.com>",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"git": "https://github.com/gfk-ba/meteor-notifications.git"
 }

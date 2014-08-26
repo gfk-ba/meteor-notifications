@@ -22,7 +22,7 @@ function configurePackage (api) {
 
 Package.describe({
 	summary: 'Notifications - Add reactive notifications to any meteor template',
-	version: 'v1.0.3',
+	version: 'v1.0.4',
 	git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
@@ -42,5 +42,5 @@ Package.on_test(function(api) {
 		'juanlavaina:sinon@0.1.5'
 	], 'client');
 
-	api.addFiles('notifications_tests.js', ['client']);
+	api.add_files('notifications_tests.js', ['client']);
 });
