@@ -9,7 +9,7 @@ function configurePackage (api) {
 		'less@1.0.0'
 	], 'client');
 
-	api.addFiles(
+	api.add_files(
 		[
 			'notifications.less',
 			'notifications.html',
@@ -22,7 +22,7 @@ function configurePackage (api) {
 
 Package.describe({
 	summary: 'Notifications - Add reactive notifications to any meteor template',
-	version: 'v1.0.2',
+	version: 'v1.0.3',
 	git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
