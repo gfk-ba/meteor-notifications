@@ -46,14 +46,7 @@ Package.on_test(function(api) {
 		'underscore'
 	], 'client');
 
-	if (api.versionsFrom) {
-		api.use([
-			'juanlavaina:chai@0.1.5',
-			'juanlavaina:sinon@0.1.5'
-		], 'client');
-	} else {
-		api.use(['chai', 'sinon'], 'client');
-	}
+	api.use(['munit', 'chai', 'sinon'], 'client');
 
 	api.add_files('notifications_tests.js', ['client']);
 });
