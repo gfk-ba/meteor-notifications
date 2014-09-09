@@ -1,49 +1,37 @@
-function configurePackage (api) {
-	if (api.versionsFrom) {
-		api.versionsFrom('METEOR@0.9.0');
-
-		api.use([
-			'templating@1.0.0',
-			'underscore@1.0.0',
-			'less@1.0.0'
-		], 'client');
-	} else {
-		api.use([
-			'templating',
-			'underscore',
-			'less'
-		], 'client');
-	}
-
-	api.add_files(
-		[
-			'notifications.less',
-			'notifications.html',
-			'notifications.js',
-			'notification.html',
-			'notification.js'
-		],
-		['client']);
-}
-
 Package.describe({
 	summary: 'Notifications - Add reactive notifications to any meteor template',
-	version: '1.0.5',
+	version: '1.0.6',
 	git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
 Package.on_use(function(api) {
-	configurePackage(api);
+	api.versionsFrom('METEOR@0.9.0');
+
+	api.use([
+		'templating',
+		'underscore',
+		'less',
+		'mongo'
+	], 'client');
+
+	api.add_files(
+			[
+				'notifications.less',
+				'notifications.html',
+				'notifications.js',
+				'notification.html',
+				'notification.js'
+			],
+			['client']);
 
 	api.export && api.export('Notifications', ['client']);
 });
 
 Package.on_test(function(api) {
-	configurePackage(api);
-
 	api.use([
 		'tinytest',
-		'underscore'
+		'underscore',
+		'gfk:notifications'
 	], 'client');
 
 	api.use(['gfk:munit@1.0.0', 'mdj:chai@1.0.0', 'mdj:sinon@1.0.0'], 'client');
