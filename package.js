@@ -5,13 +5,13 @@ Package.describe({
 });
 
 Package.on_use(function(api) {
-	api.versionsFrom('METEOR@0.9.1');
+	api.versionsFrom && api.versionsFrom('METEOR@0.9.1');
 
 	api.use([
 		'templating',
 		'underscore',
 		'less',
-		'mongo@1.0.4'
+		// 'mongo@1.0.4'
 	], 'client');
 
 	api.add_files(
@@ -20,21 +20,21 @@ Package.on_use(function(api) {
 				'notifications.html',
 				'notifications.js',
 				'notification.html',
-				'notification.js'
+				'notification.js',
 			],
 			['client']);
 
 	api.export && api.export('Notifications', ['client']);
 });
 
-Package.on_test(function(api) {
-	api.use([
-		'tinytest',
-		'underscore',
-		'gfk:notifications'
-	], 'client');
+// Package.on_test(function(api) {
+// 	api.use([
+// 		'tinytest',
+// 		'underscore',
+// 		'gfk:notifications'
+// 	], 'client');
 
-	api.use(['gfk:munit@1.0.0', 'mdj:chai@1.0.0', 'mdj:sinon@1.0.0'], 'client');
+// 	api.use(['gfk:munit@1.0.0', 'mdj:chai@1.0.0', 'mdj:sinon@1.0.0'], 'client');
 
-	api.add_files('notifications_tests.js', ['client']);
-});
+// 	api.add_files('notifications_tests.js', ['client']);
+// });

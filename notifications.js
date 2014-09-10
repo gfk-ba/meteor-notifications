@@ -31,6 +31,7 @@ var constructor = (function() {
         notification.message = message;
         notification.type = options.type;
         notification.userCloseable = options.userCloseable;
+        notification.closed = options.closed;
 
         if (options.timeout) {
             notification.expires = new Date().getTime() + options.timeout;
