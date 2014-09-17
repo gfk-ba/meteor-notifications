@@ -1,6 +1,6 @@
 Package.describe({
 	summary: 'Notifications - Add reactive notifications to any meteor template',
-	version: '1.0.8',
+	version: '1.0.9',
 	git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
