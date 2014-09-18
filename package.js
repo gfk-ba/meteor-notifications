@@ -5,13 +5,13 @@ Package.describe({
 });
 
 Package.on_use(function(api) {
-	api.versionsFrom && api.versionsFrom('METEOR@0.9.1');
+	api.versionsFrom('METEOR@0.9.1');
 
 	api.use([
 		'templating',
 		'underscore',
 		'less',
-		// 'mongo@1.0.4'
+		'mongo@1.0.4'
 	], 'client');
 
 	api.add_files(
