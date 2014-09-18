@@ -9,7 +9,7 @@ var constructor = (function() {
 		settings = settings || {};
 		_.defaults(settings, this.defaultSettings);
 
-        this._notificationsCollection = new Meteor.Collection(null);
+        this._notificationsCollection = new Mongo.Collection(null);
         this._notificationTimeout = undefined;
 		this.settings = settings;
     }
