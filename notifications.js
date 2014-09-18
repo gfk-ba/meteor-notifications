@@ -1,4 +1,4 @@
-// 'use strict'; reinstate when https://github.com/meteor/meteor/issues/2437 is fixed
+ 'use strict';
 
 var constructor = (function() {
     /***
@@ -138,7 +138,7 @@ var constructor = (function() {
     Notifications.prototype._getFirstExpiredTimestamp = function () {
         var notificationsCollection = this._getNotificationsCollection();
 
-        var firstNotification = notificationsCollection.findOne({expires: {$gt: 0}}, {sort:[['expires', 'asc']]});
+        var firstNotification = notificationsCollection.findOne({expires: {$gt: 0}}, {sort:[['expires', 'asc']]}, { reactive: false });
         var firstExpiredTimestamp = firstNotification ? firstNotification.expires : 0;
 
         return firstExpiredTimestamp;

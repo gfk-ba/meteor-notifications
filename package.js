@@ -16,6 +16,7 @@ Package.on_use(function(api) {
 
 	api.add_files(
 			[
+			  'lib/globals.js',
 				'notifications.less',
 				'notifications.html',
 				'notifications.js',
