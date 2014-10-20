@@ -4,7 +4,7 @@ Package.describe({
 	git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
-Package.on_use(function(api) {
+Package.onUse(function(api) {
 	api.versionsFrom('METEOR@0.9.1');
 
 	api.use([
@@ -14,7 +14,7 @@ Package.on_use(function(api) {
 		'mongo@1.0.4'
 	], 'client');
 
-	api.add_files(
+	api.addFiles(
 			[
 				'notifications.less',
 				'notifications.html',
@@ -27,7 +27,7 @@ Package.on_use(function(api) {
 	api.export && api.export('Notifications', ['client']);
 });
 
-Package.on_test(function(api) {
+Package.onTest(function(api) {
 	api.use([
 		'tinytest',
 		'underscore',
@@ -36,5 +36,5 @@ Package.on_test(function(api) {
 
 	api.use(['gfk:munit@1.0.0', 'mdj:chai@1.0.0', 'mdj:sinon@1.0.0'], 'client');
 
-	api.add_files('notifications_tests.js', ['client']);
+	api.addFiles('notifications_tests.js', ['client']);
 });
