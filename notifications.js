@@ -1,3 +1,4 @@
+/*global Notifications:true */
 // 'use strict'; reinstate when https://github.com/meteor/meteor/issues/2437 is fixed
 
 var constructor = (function() {
@@ -250,9 +251,11 @@ Template.notifications.rendered = function () {
         },
         removeElement: function (node) {
 			var settings = Notifications.settings;
-            $(node).animate(settings.hideAnimationProperties, {duration: settings.animationSpeed, complete: function () {
-                $(node).remove();
-            }});
+            $(node).animate(settings.hideAnimationProperties, {
+                duration: settings.animationSpeed,
+                complete: function () {
+                    $(node).remove();
+                }});
         }
     };
 };

@@ -1,3 +1,5 @@
+/*jshint -W098*/
+/*global describe, it, before, beforeEach, after, afterEach, sinon, beforeAll, chai */
 var instance, sandbox, notificationsCollection, expect;
 
 var setupFn = function () {
