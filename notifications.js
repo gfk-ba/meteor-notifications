@@ -229,9 +229,11 @@ var constructor = (function() {
 
 Notifications = new constructor();
 
-Template.notifications.notifications = function() {
-    return Notifications._getNotificationsCollection().find();
-};
+Template.notifications.helpers({
+    notifications: function() {
+        return Notifications._getNotificationsCollection().find();
+    }
+});
 
 Template.notifications.rendered = function () {
     this.firstNode._uihooks = {
