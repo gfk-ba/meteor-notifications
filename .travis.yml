@@ -2,7 +2,7 @@
       node_js:
        - "0.10"
       env:
-       - TEST_COMMAND="meteor"
+       - TEST_COMMAND="meteor" METEOR_RELEASE="0.9.4"
       before_install:
        - "curl -L http://git.io/ejPSng | /bin/sh"
       branches:
