@@ -2,7 +2,7 @@
   "dependencies": [
     [
       "application-configuration",
-      "1.0.2"
+      "1.0.3"
     ],
     [
       "base64",
@@ -10,7 +10,7 @@
     ],
     [
       "binary-heap",
-      "1.0.0"
+      "1.0.1"
     ],
     [
       "blaze",
@@ -78,7 +78,7 @@
     ],
     [
       "mongo",
-      "1.0.5"
+      "1.0.7"
     ],
     [
       "observe-sequence",
