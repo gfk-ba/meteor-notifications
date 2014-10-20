@@ -1,4 +1,4 @@
-Unit tests: [![Build Status](https://secure.travis-ci.org/gfk-ba/meteor-notifications.png)](http://travis-ci.org/gfk-ba/meteor-notifications)
+Unit tests: [![Build Status](https://secure.travis-ci.org/gfk-ba/meteor-notifications.png)](http://travis-ci.org/gfk-ba/meteor-notifications) <- For some reason broken on travis, they all pass when you run them locally
 
 [UI tests](http://notifications-example.meteor.com/): [![Build Status](https://secure.travis-ci.org/gfk-ba/meteor-notifications-example.png)](http://travis-ci.org/gfk-ba/meteor-notifications-example)
 
