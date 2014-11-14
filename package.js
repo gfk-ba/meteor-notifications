@@ -32,7 +32,7 @@ Package.onTest(function(api) {
 	api.use([
 		'tinytest',
 		'underscore',
-		'gfk:notifications'
+		'gfk:notifications@1.1.0'
 	], 'client');
 
 	api.use(['spacejamio:munit@2.1.0'], 'client');
