@@ -3,6 +3,10 @@
 var instance, sandbox, notificationsCollection, expect;
 
 var setupFn = function () {
+	if (sandbox) {
+		tearDownFn();
+	}
+
 	instance = Notifications;
 	sandbox = sinon.sandbox.create();
 	notificationsCollection = instance._getNotificationsCollection();
@@ -12,6 +16,7 @@ var tearDownFn = function () {
 	sandbox.restore();
 	instance._notificationTimeout = undefined;
 	notificationsCollection.remove({});
+    sandbox = undefined;
 };
 
 var testNotification, timedNotification, clock, testId;
@@ -22,11 +27,10 @@ describe('#addNotification', function () {
 	});
 
 	beforeEach(function () {
-		setupFn();
+        setupFn();
 	});
 
 	afterEach(function () {
-		tearDownFn();
 	});
 
 	it('Should call _add', function () {
@@ -45,6 +49,7 @@ describe('#addNotification', function () {
 		expected.message = testMessage;
 		expected.type = instance.defaultOptions.type;
 		expected.userCloseable = instance.defaultOptions.userCloseable;
+		expected.closed = undefined;
 
 		delete expected.timeout;
 
@@ -78,6 +83,7 @@ describe('#addNotification', function () {
 		expected.message = testMessage;
 		expected.type = testOptions.type;
 		expected.userCloseable = testOptions.userCloseable;
+		expected.closed = undefined;
 		delete expected.timeout;
 		instance.addNotification(testTitle, testMessage, _.clone(testOptions));
 		expect(_add).to.have.been.calledWith(expected);
@@ -138,10 +144,6 @@ describe('#remove', function () {
 		instance._add(testNotification);
 		testNotification._id = testId = 'unique';
 		instance._add(testNotification);
-	});
-
-	afterEach(function () {
-		tearDownFn();
 	});
 
 	it('Should remove the notification with the given _id', function () {
