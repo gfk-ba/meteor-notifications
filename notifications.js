@@ -1,4 +1,5 @@
- 'use strict';
+/* global Notifications:true */
+"use strict";
 
 var constructor = (function() {
     /***
@@ -24,7 +25,7 @@ var constructor = (function() {
      */
     Notifications.prototype.addNotification = function (title, message, options) {
         options = options || {};
-        _.defaults(options, this.defaultOptions);
+        _.defaults(options, this._getDefaultOptions(options.type));
 
         var notification = {};
         notification.title = title;
@@ -163,6 +164,16 @@ var constructor = (function() {
     };
 
     /***
+     * gets the proper notification defaults based on type
+     * @private
+     */
+    Notifications.prototype._getDefaultOptions = function (type) {
+        var self = this;
+        return type && self.defaultOptionsByType[type] || self.defaultOptions;
+    };
+
+
+    /***
      * Gets the class containing the color for the notification
      * @param {String} notificationType
      * @returns {string} classname to use for the notification
@@ -214,6 +225,13 @@ var constructor = (function() {
         timeout: 0
     };
 
+    /***
+     * Object with the default options for the notifications for specific types
+     * @type {{type: number, userCloseable: boolean, timeout: number}}
+     */
+    Notifications.prototype.defaultOptionsByType = {};
+
+
 	Notifications.prototype.defaultSettings = {
 		hideAnimationProperties: {
 			height: 0,
@@ -230,9 +248,11 @@ var constructor = (function() {
 
 Notifications = new constructor();
 
-Template.notifications.notifications = function() {
-    return Notifications._getNotificationsCollection().find();
-};
+Template.notifications.helpers({
+    notifications: function() {
+        return Notifications._getNotificationsCollection().find();
+    }
+});
 
 Template.notifications.rendered = function () {
     this.firstNode._uihooks = {
@@ -249,9 +269,11 @@ Template.notifications.rendered = function () {
         },
         removeElement: function (node) {
 			var settings = Notifications.settings;
-            $(node).animate(settings.hideAnimationProperties, {duration: settings.animationSpeed, complete: function () {
-                $(node).remove();
-            }});
+            $(node).animate(settings.hideAnimationProperties, {
+                duration: settings.animationSpeed,
+                complete: function () {
+                    $(node).remove();
+                }});
         }
     };
 };
