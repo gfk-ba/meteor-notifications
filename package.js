@@ -11,7 +11,7 @@ Package.onUse(function(api) {
 		'templating',
 		'underscore',
 		'less',
-		'mongo@1.0.4'
+		'mongo'
 	], 'client');
 
 	api.addFiles(
@@ -21,7 +21,7 @@ Package.onUse(function(api) {
 				'notifications.html',
 				'notifications.js',
 				'notification.html',
-				'notification.js',
+				'notification.js'
 			],
 			['client']);
 
@@ -31,11 +31,9 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
 	api.use([
 		'tinytest',
-		'underscore',
-		'gfk:notifications@1.1.0'
+		'gfk:notifications',
+		'spacejamio:munit@2.1.0'
 	], 'client');
-
-	api.use(['spacejamio:munit@2.1.0'], 'client');
 
 	api.addFiles('notifications_tests.js', ['client']);
 });
