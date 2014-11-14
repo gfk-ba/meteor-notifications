@@ -16,23 +16,21 @@ Package.onUse(function(api) {
 	api.addFiles(
 			[
 			  'lib/globals.js',
-				'notifications.less',
 				'notifications.html',
 				'notifications.js',
 				'notification.html',
 				'notification.js'
 			],
-			['client']);
+			'client');
 
 	api.export('Notifications', ['client']);
 });
 
 Package.onTest(function(api) {
 	api.use([
-		'tinytest',
 		'gfk:notifications',
 		'spacejamio:munit@2.1.0'
 	], 'client');
 
-	api.addFiles('notifications_tests.js', ['client']);
+	api.addFiles('notifications_tests.js', 'client');
 });
