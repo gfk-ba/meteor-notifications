@@ -25,7 +25,7 @@ Package.onUse(function(api) {
 			],
 			['client']);
 
-	api.export && api.export('Notifications', ['client']);
+	api.export('Notifications', ['client']);
 });
 
 Package.onTest(function(api) {
