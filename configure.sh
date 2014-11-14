@@ -3,4 +3,6 @@
 #install meteor
 curl https://install.meteor.com | /bin/sh
 
-meteor update
+cd ..
+mv meteor-notifications gfk:notifications
+cd gfk:notifications
