@@ -22,6 +22,7 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {String}  [options.type=defaultOptions.type] the type of the notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
+     * @param {Function} [options.closed] Call this handler (passing data context) on notification close
      */
     Notifications.prototype.addNotification = function (title, message, options) {
         options = options || {};
@@ -47,6 +48,7 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
+     * @param {Function} [options.closed] Call this handler (passing data context) on notification close
      * @returns {*}
      */
     Notifications.prototype.error = function (title, message, options) {
@@ -61,6 +63,7 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
+     * @param {Function} [options.closed] Call this handler (passing data context) on notification close
      * @returns {*}
      */
     Notifications.prototype.warn = function (title, message, options) {
@@ -75,6 +78,7 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
+     * @param {Function} [options.closed] Call this handler (passing data context) on notification close
      * @returns {*}
      */
     Notifications.prototype.info = function (title, message, options) {
@@ -89,6 +93,7 @@ var constructor = (function() {
      * @param {String} message of the notification
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
+     * @param {Function} [options.closed] Call this handler (passing data context) on notification close
      * @returns {*}
      */
     Notifications.prototype.success = function (title, message, options) {
@@ -217,7 +222,7 @@ var constructor = (function() {
 
     /***
      * Object with the default options for the notifications
-     * @type {{type: number, userCloseable: boolean, timeout: number}}
+     * @type {{type: number, userCloseable: boolean, timeout: number, closed: function}}
      */
     Notifications.prototype.defaultOptions = {
         type: Notifications.prototype.TYPES.INFO,
@@ -227,7 +232,7 @@ var constructor = (function() {
 
     /***
      * Object with the default options for the notifications for specific types
-     * @type {{type: number, userCloseable: boolean, timeout: number}}
+     * @type {{type: number, userCloseable: boolean, timeout: number, closed: function}}
      */
     Notifications.prototype.defaultOptionsByType = {};
 

@@ -83,6 +83,19 @@ Meteor.startup(function () {
 });
 ```
 
+Optionally, you can also provide type specific options by changing the Notifications.defaultOptionsByType object.
+
+``` javascript
+Meteor.startup(function () {
+    //Give Error notifications a longer timeout
+    Notifications.defaultOptionsByType[Notifications.TYPES.ERROR] = _.defaults({
+        timeout: 10000
+    },
+    Notifications.defaultOptions);
+});
+```
+
+
 ### Restyling the notifications
 To restyle the notifications check the [styleSheet](https://github.com/gfk-ba/meteor-notifications/blob/master/notifications.less)
 And create your own stylesheet in your application that overrides the classes defined in the bundled style. For instance if you want to make the success notifications red you would add the following:
@@ -110,6 +123,7 @@ Adds a notification
 * **Object** *[options={}]* Options object to use for notification
 * **String** *[options.type=defaultOptions.type]* the type of the notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## error(title, message, [options={}])
 
@@ -121,6 +135,7 @@ Wraps addNotification, sets type to error
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## warn(title, message, [options={}])
 
@@ -132,6 +147,7 @@ Wraps addNotification, sets type to warning
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## info(title, message, [options={}])
 
@@ -143,6 +159,7 @@ Wraps addNotification, sets type to info
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## success(title, message, [options={}])
 
@@ -154,6 +171,7 @@ Wraps addNotification, sets type to success
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## getNotificationClass(notificationType)
 
@@ -178,3 +196,6 @@ Stores constants for the different notification types
 ## defaultOptions
 
 Object with the default options for the notifications
+
+## defaultOptionsByType
+Object with keys for each notification type.  Values are an object identical to defaultOptions
