@@ -12,7 +12,7 @@ Template.notification.helpers({
 });
 
 Template.notification.events = {
-    'click .closeButton': function () {
+    'click': function () {
         if (this.userCloseable || this.expires < new Date()) {
             Notifications.remove(this._id);
             if (this.closed) {

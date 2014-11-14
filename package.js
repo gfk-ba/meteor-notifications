@@ -35,7 +35,7 @@ Package.onTest(function(api) {
 		'gfk:notifications'
 	], 'client');
 
-// 	api.use(['gfk:munit@1.0.0', 'mdj:chai@1.0.0', 'mdj:sinon@1.0.0'], 'client');
+	api.use(['gfk:munit@1.0.0', 'mdj:chai@1.0.0', 'mdj:sinon@1.0.0'], 'client');
 
 	api.addFiles('notifications_tests.js', ['client']);
 });

@@ -198,4 +198,4 @@ Stores constants for the different notification types
 Object with the default options for the notifications
 
 ## defaultOptionsByType
-Object with keys for each notification type.  Values are an object identical to defaultOptions
+Object with the default options for the notifications for specific types
