@@ -5,8 +5,7 @@ Unit tests: [![Build Status](https://secure.travis-ci.org/gfk-ba/meteor-notifica
 
 # Meteor notifications
 
-notifications - Add reactive notifications to your meteor application
-Makes use of meteor's rendering system, not just a jQuery/bootstrap wrapper.
+Add tooltip-style reactive notifications to your Meteor application. Makes use of Meteor's rendering system; not just a jQuery/bootstrap wrapper.
 
 See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.com](https://github.com/gfk-ba/meteor-notifications-example)
 
@@ -23,15 +22,13 @@ See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.c
 
 ## Installation
 
-Meteor Router can be installed with [Meteorite](https://github.com/oortcloud/meteorite/). From inside a Meteorite-managed app:
-
 *Meteor 0.9.0 and above:*
 
 ``` sh
 $ meteor add gfk:notifications
 ```
 
-*Meteor 0.8 and below use meteorite:*
+*Meteor 0.8 and below - use [Meteorite](https://github.com/oortcloud/meteorite/):*
 
 ``` sh
 $ mrt add notifications
@@ -59,7 +56,7 @@ Notifications.success('title', 'message');
 
 ### Changing default settings
 
-To change the animation speed or hideAnimationProperties, you need to change the Notifications.settings object.
+To change the animation speed or the [`hideAnimationProperties`](https://github.com/dandv/meteor-notifications/blob/master/notifications.js#L241), you need to change the `Notifications.settings` object.
 
 **Example:**
 
@@ -71,7 +68,7 @@ Meteor.startup(function () {
 
 
 
-Default options to be used for each notification can be changed by changing the Notifications.defaultOptions object.
+Default options to be used for each notification can be changed in the `Notifications.defaultOptions` object.
 
 **Example:**
 
@@ -83,7 +80,7 @@ Meteor.startup(function () {
 });
 ```
 
-Optionally, you can also provide type specific options by changing the Notifications.defaultOptionsByType object.
+Optionally, you can also provide type-specific options by changing the `Notifications.defaultOptionsByType` object.
 
 ``` javascript
 Meteor.startup(function () {
@@ -97,8 +94,9 @@ Meteor.startup(function () {
 
 
 ### Restyling the notifications
+
 To restyle the notifications check the [styleSheet](https://github.com/gfk-ba/meteor-notifications/blob/master/notifications.less)
-And create your own stylesheet in your application that overrides the classes defined in the bundled style. For instance if you want to make the success notifications red you would add the following:
+and create your own stylesheet that overrides the classes defined in the bundled style. For instance, if you want to make the success notifications red you would add the following:
 
 ``` css
 li.notification {
@@ -110,11 +108,11 @@ li.notification {
 
 ## Notifications()
 
-Creates an instance of Notifications
+Creates an instance of `Notifications`.
 
 ## addNotification(title, message, [options={}])
 
-Adds a notification
+Adds a notification.
 
 ### Params:
 
@@ -127,7 +125,7 @@ Adds a notification
 
 ## error(title, message, [options={}])
 
-Wraps addNotification, sets type to error
+Wraps `addNotification`, sets type to error.
 
 ### Params:
 
@@ -139,7 +137,7 @@ Wraps addNotification, sets type to error
 
 ## warn(title, message, [options={}])
 
-Wraps addNotification, sets type to warning
+Wraps `addNotification`, sets type to warning
 
 ### Params:
 
@@ -151,7 +149,7 @@ Wraps addNotification, sets type to warning
 
 ## info(title, message, [options={}])
 
-Wraps addNotification, sets type to info
+Wraps `addNotification`, sets type to info
 
 ### Params:
 
@@ -163,7 +161,7 @@ Wraps addNotification, sets type to info
 
 ## success(title, message, [options={}])
 
-Wraps addNotification, sets type to success
+Wraps `addNotification`, sets type to success
 
 ### Params:
 

@@ -7,12 +7,12 @@ var constructor = (function() {
      * @constructor
      */
     function Notifications(settings) {
-		settings = settings || {};
-		_.defaults(settings, this.defaultSettings);
+        settings = settings || {};
+        _.defaults(settings, this.defaultSettings);
 
         this._notificationsCollection = new Mongo.Collection(null);
         this._notificationTimeout = undefined;
-		this.settings = settings;
+        this.settings = settings;
     }
 
     /***
@@ -158,10 +158,10 @@ var constructor = (function() {
         var self = this;
         var firstExpiration = this._getFirstExpiredTimestamp();
 
-		if (firstExpiration) {
+        if (firstExpiration) {
             this._notificationTimeout = Meteor.setTimeout(function () {
-				self.remove({expires: {$lte: firstExpiration}});
-				self._createTimeout();
+                self.remove({expires: {$lte: firstExpiration}});
+                self._createTimeout();
             }, firstExpiration - new Date().getTime());
         } else {
             this._notificationTimeout = undefined;
@@ -237,16 +237,16 @@ var constructor = (function() {
     Notifications.prototype.defaultOptionsByType = {};
 
 
-	Notifications.prototype.defaultSettings = {
-		hideAnimationProperties: {
-			height: 0,
-			opacity: 0,
-			paddingTop: 0,
-			paddingBottom: 0,
-			marginTop: 0
-		},
-		animationSpeed: 400
-	};
+    Notifications.prototype.defaultSettings = {
+        hideAnimationProperties: {
+            height: 0,
+            opacity: 0,
+            paddingTop: 0,
+            paddingBottom: 0,
+            marginTop: 0
+        },
+        animationSpeed: 400
+    };
 
     return Notifications;
 })();
@@ -262,8 +262,8 @@ Template.notifications.helpers({
 Template.notifications.rendered = function () {
     this.firstNode._uihooks = {
         insertElement: function (node, next) {
-			var settings = Notifications.settings;
-			$(node)
+            var settings = Notifications.settings;
+            $(node)
                 .addClass('notificationHidden')
                 .insertBefore(next)
                 .fadeIn({duration: settings.animationSpeed})
@@ -273,7 +273,7 @@ Template.notifications.rendered = function () {
                 });
         },
         removeElement: function (node) {
-			var settings = Notifications.settings;
+            var settings = Notifications.settings;
             $(node).animate(settings.hideAnimationProperties, {
                 duration: settings.animationSpeed,
                 complete: function () {

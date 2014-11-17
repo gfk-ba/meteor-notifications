@@ -126,7 +126,7 @@
       "Random": false,
       "_": false,               // Underscore.js
       "$": false,               // jQuery
-      "Router": false,           // iron-router
+      "Router": false,          // iron-router
       "Notifications": false
 
     }
