@@ -1,9 +1,11 @@
 /*jshint -W098*/
 /*global describe, it, before, beforeEach, after, afterEach, sinon, beforeAll, chai */
-var instance, sandbox, notificationsCollection, expect;
+var instance, sandbox, notificationsCollection;
 
 var setupFn = function () {
     if (sandbox) {
+        //Munit doesn't call the afterEach when a test fails so we do cleanup here to prevent cascading fails
+        //See for more info: https://github.com/spacejamio/meteor-munit/issues/24
         tearDownFn();
     }
 
@@ -21,16 +23,11 @@ var tearDownFn = function () {
 
 var testNotification, timedNotification, clock, testId;
 
-describe('#addNotification', function () {
-    beforeAll(function () {
-        expect = chai.expect;
-    });
+var expect = chai.expect;
 
+describe('#addNotification', function () {
     beforeEach(function () {
         setupFn();
-    });
-
-    afterEach(function () {
     });
 
     it('Should call _add', function () {
@@ -106,17 +103,10 @@ describe('#addNotification', function () {
 });
 
 describe('#getNotificationClass', function () {
-    beforeAll(function () {
-        expect = chai.expect;
-    });
-
     beforeEach(function () {
         setupFn();
     });
 
-    afterEach(function () {
-        tearDownFn();
-    });
 
     it('Should return the className for the given type', function () {
         expect(instance.getNotificationClass(instance.TYPES.ERROR)).to.equal('error');
@@ -128,10 +118,6 @@ describe('#getNotificationClass', function () {
 
 describe('#remove', function () {
     var testNotification;
-
-    beforeAll(function () {
-        expect = chai.expect;
-    });
 
     beforeEach(function () {
         setupFn();
@@ -159,10 +145,6 @@ describe('#remove', function () {
 describe('#_add', function () {
     var testNotification, timedNotification;
 
-    beforeAll(function () {
-        expect = chai.expect;
-    });
-
     beforeEach(function () {
         setupFn();
         testNotification = {
@@ -173,10 +155,6 @@ describe('#_add', function () {
 
         timedNotification = _.clone(testNotification);
         timedNotification.expires = new Date().getTime() + 2000;
-    });
-
-    afterEach(function () {
-        tearDownFn();
     });
 
     it('Should call _add', function () {
@@ -217,10 +195,6 @@ describe('#_add', function () {
 describe('#_createTimeout', function () {
     var timedNotification, clock;
 
-    beforeAll(function () {
-        expect = chai.expect;
-    });
-
     beforeEach(function () {
         setupFn();
         clock = sandbox.useFakeTimers();
@@ -229,10 +203,6 @@ describe('#_createTimeout', function () {
         timedNotification.message = 'test100';
         timedNotification.type = instance.defaultOptions.type;
         timedNotification.userCloseable = instance.defaultOptions.userCloseable;
-    });
-
-    afterEach(function () {
-        tearDownFn();
     });
 
     it('Should set _notificationTimeout', function () {
