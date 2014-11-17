@@ -7,7 +7,7 @@ Unit tests: [![Build Status](https://secure.travis-ci.org/gfk-ba/meteor-notifica
 
 Add tooltip-style reactive notifications to your Meteor application. Makes use of Meteor's rendering system; not just a jQuery/bootstrap wrapper.
 
-See example @ [meteor.com](http://notifications-example.meteor.com/) & [github.com](https://github.com/gfk-ba/meteor-notifications-example)
+See example page @ [meteor.com](http://notifications-example.meteor.com/) source: [github.com](https://github.com/gfk-ba/meteor-notifications-example)
 
 ## Versions
 |Meteor Version|Notifications version|
