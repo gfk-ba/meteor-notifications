@@ -54,6 +54,28 @@ describe('#addNotification', function () {
         expect(_add).to.have.been.calledWith(expected);
     });
 
+    it('Should use defaultOptionsByType if exists for type', function () {
+        var _add = sandbox.stub(instance, '_add');
+        var expected = _.clone(instance.defaultOptions);
+        var testMessage = 'test123';
+        var testTitle = 'Title';
+
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING] = {};
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].userCloseable = false;
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].closed = 'blabla';
+
+        delete expected.timeout;
+        expected.title = testTitle;
+        expected.message = testMessage;
+        expected.type = Notifications.TYPES.WARNING;
+        expected.userCloseable = false;
+        expected.closed = 'blabla';
+
+
+        instance.warn(testTitle, testMessage);
+        expect(_add).to.have.been.calledWith(expected);
+    });
+
     it('Called with options - it should call _add', function () {
         var testOptions = {
             type: instance.TYPES.ERROR,
@@ -68,7 +90,8 @@ describe('#addNotification', function () {
     it('Called with options - Should use the options to construct the object to pass to _add', function () {
         var testOptions = {
             type: instance.TYPES.ERROR,
-            userCloseable: false
+            userCloseable: false,
+            closed: 'test123'
         };
 
         var _add = sandbox.stub(instance, '_add');
@@ -80,7 +103,7 @@ describe('#addNotification', function () {
         expected.message = testMessage;
         expected.type = testOptions.type;
         expected.userCloseable = testOptions.userCloseable;
-        expected.closed = undefined;
+        expected.closed = 'test123';
         delete expected.timeout;
         instance.addNotification(testTitle, testMessage, _.clone(testOptions));
         expect(_add).to.have.been.calledWith(expected);
@@ -238,4 +261,23 @@ describe('#_createTimeout', function () {
 
         expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
     });
+});
+
+describe('#getDefaultOptions', function () {
+    beforeEach(function () {
+        setupFn();
+    });
+
+    it('Should return defaultOptions when type is not given', function () {
+        expect(instance.getDefaultOptions()).to.eql(Notifications.defaultOptions);
+    });
+
+    it('Should return defaultOptions of the type when type is given', function () {
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING] = {
+            foo: 'bar'
+        };
+        
+        expect(instance.getDefaultOptions(Notifications.TYPES.WARNING)).to.eql(Notifications.defaultOptionsByType[Notifications.TYPES.WARNING]);
+    });
+
 });

@@ -26,7 +26,7 @@ var constructor = (function() {
      */
     Notifications.prototype.addNotification = function (title, message, options) {
         options = options || {};
-        _.defaults(options, this._getDefaultOptions(options.type));
+        _.defaults(options, this.getDefaultOptions(options.type));
 
         var notification = {};
         notification.title = title;
@@ -170,11 +170,10 @@ var constructor = (function() {
 
     /***
      * gets the proper notification defaults based on type
-     * @private
+     * @param {String} notificationType the type of the notification for which to get the defaultOptions
      */
-    Notifications.prototype._getDefaultOptions = function (type) {
-        var self = this;
-        return type && self.defaultOptionsByType[type] || self.defaultOptions;
+    Notifications.prototype.getDefaultOptions = function (notificationType) {
+        return this.defaultOptionsByType[notificationType] || this.defaultOptions;
     };
 
 
