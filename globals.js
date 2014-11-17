@@ -5,4 +5,4 @@
 // More info: https://github.com/meteor/meteor/issues/2437
 
 
-Notifcations = {};
+Notifications = {};
