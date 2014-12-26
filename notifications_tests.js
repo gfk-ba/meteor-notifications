@@ -46,6 +46,7 @@ describe('#addNotification', function () {
         expected.message = testMessage;
         expected.type = instance.defaultOptions.type;
         expected.userCloseable = instance.defaultOptions.userCloseable;
+        expected.clickBodyToClose = instance.defaultOptions.clickBodyToClose;
         expected.closed = undefined;
 
         delete expected.timeout;
@@ -62,6 +63,7 @@ describe('#addNotification', function () {
 
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING] = {};
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].userCloseable = false;
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].clickBodyToClose = false;
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].closed = 'blabla';
 
         delete expected.timeout;
@@ -69,6 +71,7 @@ describe('#addNotification', function () {
         expected.message = testMessage;
         expected.type = Notifications.TYPES.WARNING;
         expected.userCloseable = false;
+        expected.clickBodyToClose = false;
         expected.closed = 'blabla';
 
 
@@ -91,6 +94,7 @@ describe('#addNotification', function () {
         var testOptions = {
             type: instance.TYPES.ERROR,
             userCloseable: false,
+            clickBodyToClose: true,
             closed: 'test123'
         };
 
@@ -103,6 +107,7 @@ describe('#addNotification', function () {
         expected.message = testMessage;
         expected.type = testOptions.type;
         expected.userCloseable = testOptions.userCloseable;
+        expected.clickBodyToClose = testOptions.clickBodyToClose;
         expected.closed = 'test123';
         delete expected.timeout;
         instance.addNotification(testTitle, testMessage, _.clone(testOptions));

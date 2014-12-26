@@ -22,7 +22,9 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {String}  [options.type=defaultOptions.type] the type of the notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
+     * @param {Boolean} [options.clickBodyToClose=defaultOptions.clickBodyToClose] Whether the notification can be closed by clicking anywhere within its body. If turned off then the close button must clicked.
      * @param {Function} [options.closed] Call this handler (passing data context) on notification close
+     * @param {Function} [options.timeout] No. of milliseconds to show this notification for.
      */
     Notifications.prototype.addNotification = function (title, message, options) {
         options = options || {};
@@ -33,6 +35,7 @@ var constructor = (function() {
         notification.message = message;
         notification.type = options.type;
         notification.userCloseable = options.userCloseable;
+        notification.clickBodyToClose = options.clickBodyToClose;
         notification.closed = options.closed;
 
         if (options.timeout) {
@@ -226,6 +229,7 @@ var constructor = (function() {
     Notifications.prototype.defaultOptions = {
         type: Notifications.prototype.TYPES.INFO,
         userCloseable: true,
+        clickBodyToClose: true,
         timeout: 0
     };
 

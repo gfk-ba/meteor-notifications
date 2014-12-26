@@ -121,6 +121,8 @@ Adds a notification.
 * **Object** *[options={}]* Options object to use for notification
 * **String** *[options.type=defaultOptions.type]* the type of the notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
+* **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## error(title, message, [options={}])
@@ -133,6 +135,8 @@ Wraps `addNotification`, sets type to error.
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
+* **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## warn(title, message, [options={}])
@@ -145,6 +149,8 @@ Wraps `addNotification`, sets type to warning
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
+* **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## info(title, message, [options={}])
@@ -157,6 +163,8 @@ Wraps `addNotification`, sets type to info
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
+* **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## success(title, message, [options={}])
@@ -169,6 +177,8 @@ Wraps `addNotification`, sets type to success
 * **String** *message* of the notification
 * **Object** *[options={}]* Options object to use for notification
 * **Boolean** *[options.userCloseable=defaultOptions.userCloseable]* Whether the notification is user closeable
+* **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
+* **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
 ## getNotificationClass(notificationType)
@@ -197,3 +207,17 @@ Object with the default options for the notifications
 
 ## defaultOptionsByType
 Object with the default options for the notifications for specific types
+
+## Building
+
+_OS X users, ensure you have `wget` installed (available in `brew`)_
+
+To run the tests:
+
+```bash
+$ ./workaround.sh
+$ curl -L http://git.io/ejPSng | /bin/sh
+$ meteor test-packages ./
+(Now load up localhost:3000 in the browser to run the tests)
+```
+
