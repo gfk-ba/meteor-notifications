@@ -34,6 +34,37 @@ $ meteor add gfk:notifications
 $ mrt add notifications
 ```
 
+## Contributing 
+
+All contributions are welcome! Please submit pull requests. Do not forget to add tests and make sure everything is green or travis will get ya!
+
+## Testing
+
+### Unit tests
+To run the unit tests execute the following command from within your checkout:
+
+```bash
+meteor test-packages ./
+
+```
+
+### UI tests
+To make my life and yours easier I've also created some basic UI tests for this project. They are stored in the [meteor-notifications-example](https://github.com/gfk-ba/meteor-notifications-example) repository. 
+
+After each new version the example page is updated to use the latest version, after which travis runs the UI tests.
+But you can ofcourse also run them locally.
+
+1. Clone the [example page repo](https://github.com/gfk-ba/meteor-notifications-example)
+2. From within your checkout run the following commands: 
+```bash
+mkdir -p app/packages
+ln -s #YourNotificationsPackageCheckoutDirectory# app/packages/gfk:notifications
+```
+3. Make sure you have the example page running on port ```3000```
+4. From within the example page repo checkout run: ```nightwatch -c firefoxDev
+
+The example page is also a good place to debug/check your new functionality. Consider adding a example of the new functionality and creating a PR for that too!
+
 ## API
 
 ### Basics
@@ -207,17 +238,4 @@ Object with the default options for the notifications
 
 ## defaultOptionsByType
 Object with the default options for the notifications for specific types
-
-## Building
-
-_OS X users, ensure you have `wget` installed (available in `brew`)_
-
-To run the tests:
-
-```bash
-$ ./workaround.sh
-$ curl -L http://git.io/ejPSng | /bin/sh
-$ meteor test-packages ./
-(Now load up localhost:3000 in the browser to run the tests)
-```
 
