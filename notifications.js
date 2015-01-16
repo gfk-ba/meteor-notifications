@@ -42,7 +42,7 @@ var constructor = (function() {
             notification.expires = new Date().getTime() + options.timeout;
         }
 
-        this._add(notification);
+        return this._add(notification);
     };
 
     /***
@@ -122,8 +122,7 @@ var constructor = (function() {
     Notifications.prototype._add = function (notification) {
         var notificationsCollection = this._getNotificationsCollection();
         var firstExpiration = this._getFirstExpiredTimestamp();
-
-        notificationsCollection.insert(notification);
+        var notificationID = notificationsCollection.insert(notification);
 
         if (notification.expires) {
             if (this._notificationTimeout) {
@@ -137,6 +136,8 @@ var constructor = (function() {
                 this._createTimeout();
             }
         }
+
+        return notificationID;
     };
 
     /***

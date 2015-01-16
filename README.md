@@ -156,6 +156,10 @@ Adds a notification.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
+### Returns:
+
+* **String** id of the added notification.
+
 ## error(title, message, [options={}])
 
 Wraps `addNotification`, sets type to error.
@@ -169,6 +173,10 @@ Wraps `addNotification`, sets type to error.
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+
+### Returns:
+
+* **String** id of the added notification.
 
 ## warn(title, message, [options={}])
 
@@ -184,6 +192,10 @@ Wraps `addNotification`, sets type to warning
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
+### Returns:
+
+* **String** id of the added notification.
+
 ## info(title, message, [options={}])
 
 Wraps `addNotification`, sets type to info
@@ -197,6 +209,10 @@ Wraps `addNotification`, sets type to info
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+
+### Returns:
+
+* **String** id of the added notification.
 
 ## success(title, message, [options={}])
 
@@ -212,6 +228,10 @@ Wraps `addNotification`, sets type to success
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
 
+### Returns:
+
+* **String** id of the added notification.
+
 ## getNotificationClass(notificationType)
 
 Gets the class containing the color for the notification
@@ -220,13 +240,24 @@ Gets the class containing the color for the notification
 
 * **String** *notificationType*
 
-## remove()
+## remove(selector)
 
-Removes the notifications matching the selector
+Removes the notifications matching the mongo query selector
 
 ### Params:
 
-* **selector** **
+* **selector** Mongo query selector
+
+**Example:**
+
+``` javascript
+// Create Notification
+var notificationId = Notifications.success('title', 'message');
+// Remove exisiting notification sometime between [0,5) seconds
+Meteor.setTimeout( function () {
+    Notifications.remove({ _id: notificationId });
+}, Math.Random() * 5000 );
+```
 
 ## TYPES
 
