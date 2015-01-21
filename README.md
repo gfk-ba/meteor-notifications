@@ -9,34 +9,15 @@ Add tooltip-style reactive notifications to your Meteor application. Makes use o
 
 See example page @ [meteor.com](http://notifications-example.meteor.com/) source: [github.com](https://github.com/gfk-ba/meteor-notifications-example)
 
-## Versions
-|Meteor Version|Notifications version|
-| ------------- |:-------------:| -----:|
-|Meteor 0.8.2+ (Blaze 0.2)|v0.5.0 and above|
-|Meteor 0.8.0+ (Blaze 0.1)|v0.4.5 and above in v0.4.*|
-|Meteor 0.7.0+ (Spark)|v0.4.4 and below|
-
-*Note: v1.0.0 & v1.0.1 was only published to troposphere(Meteor's own package server). v1.0.2 Are published on both troposphere & atmosphere*
-
-*Note: untested on versions before 0.7.0*
-
 ## Installation
-
-*Meteor 0.9.0 and above:*
 
 ``` sh
 $ meteor add gfk:notifications
 ```
 
-*Meteor 0.8 and below - use [Meteorite](https://github.com/oortcloud/meteorite/):*
-
-``` sh
-$ mrt add notifications
-```
-
 ## Contributing 
 
-All contributions are welcome! Please submit pull requests. Do not forget to add tests and make sure everything is green or travis will get ya!
+All contributions are welcome! Please submit pull requests. *Please add tests* and make sure everything is green!
 
 ## Testing
 
