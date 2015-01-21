@@ -36,6 +36,12 @@ describe('#addNotification', function () {
         expect(_add.callCount).to.equal(1);
     });
 
+    it('Should return the _id of the notification', function () {
+        var testID = 123;
+        var _add = sandbox.stub(instance, '_add').returns(testID);
+        expect(instance.addNotification('Title', 'test123')).to.equal(testID);
+    });
+
     it('Should use the defaultOptions to construct the object to pass to _add', function () {
         var _add = sandbox.stub(instance, '_add');
         var expected = _.clone(instance.defaultOptions);
@@ -281,7 +287,7 @@ describe('#getDefaultOptions', function () {
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING] = {
             foo: 'bar'
         };
-        
+
         expect(instance.getDefaultOptions(Notifications.TYPES.WARNING)).to.eql(Notifications.defaultOptionsByType[Notifications.TYPES.WARNING]);
     });
 
