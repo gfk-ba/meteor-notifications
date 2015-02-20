@@ -1,4 +1,4 @@
-/* global Notifcations:true */
+/* global Notifications:true */
 /*jshint strict: false */
 
 //The purpose of this file is to be the one file where globals are declared.  This let's all other files use strict.
