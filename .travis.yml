@@ -1,6 +1,9 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 before_install:
-  - "./workaround.sh"
-  - "curl -L http://git.io/ejPSng | /bin/sh"
+- "./workaround.sh"
+- curl -L http://git.io/ejPSng | /bin/sh
+notifications:
+  slack:
+    secure: IAETZ66zUCAlLggvpUT9fRXJsjjv4TWLkidl6rRwKf4ZfsUKIbLYQZ50wJkD3nW2CEuwPJ7QXKS8taMhsjqgMce166bk/g9SEAeCFPNFTdrPfv2FC1VeTGYQo9klS92XNfPOBv3zk/fHhf4s+BtXoPf1JTY0PO6PKjnB+l+QKkQ=
