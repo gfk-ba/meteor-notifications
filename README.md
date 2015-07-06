@@ -15,13 +15,25 @@ See example page @ [meteor.com](http://notifications-example.meteor.com/) source
 $ meteor add gfk:notifications
 ```
 
+## FAQ
+### How do  I make the notifications show in the top corner of the browser?
+If you want a notification to always be visible within the viewport of the browser, you should set the position of the notifications wrapper div to fixed. 
+
+Add the following CSS to your application:
+```
+ul.notifications {
+position: fixed;
+}
+```
+
+
 ## Contributing 
 
 All contributions are welcome! Please submit pull requests. *Please add tests* and make sure everything is green!
 
-## Testing
+### Testing
 
-### Unit tests
+#### Unit tests
 To run the unit tests execute the following command from within your checkout:
 
 ```bash
@@ -29,7 +41,7 @@ meteor test-packages ./
 
 ```
 
-### UI tests
+#### UI tests
 To make my life and yours easier I've also created some basic UI tests for this project. They are stored in the [meteor-notifications-example](https://github.com/gfk-ba/meteor-notifications-example) repository. 
 
 After each new version the example page is updated to use the latest version, after which travis runs the UI tests.
