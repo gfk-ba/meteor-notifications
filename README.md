@@ -19,6 +19,9 @@ $ meteor add gfk:notifications
 ### How do I make the notifications stay in the top corner of the viewport?
 If you want a notification to always be visible within the viewport of the browser even when the user scrolls, you should set the position of the notifications wrapper div to fixed. 
 
+## How do I push notification from server side
+You can use the [server-messages](https://github.com/gfk-ba/meteor-server-messages) package for that. The [example page](http://server-messages-example.meteor.com/) is setup for the usecase of notifications with this package [source](https://github.com/gfk-ba/meteor-server-messages-example)
+
 Add the following CSS to your application:
 ```
 ul.notifications {
