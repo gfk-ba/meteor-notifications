@@ -26,7 +26,7 @@ position: fixed;
 }
 ```
 
-## How do I push notification from server side
+## How do I push notification from server side?
 You can use the [server-messages](https://github.com/gfk-ba/meteor-server-messages) package for that. The [example page](http://server-messages-example.meteor.com/) is setup for the usecase of notifications with this package [source](https://github.com/gfk-ba/meteor-server-messages-example)
 
 First add ```gfk:server-messages``` to your application
