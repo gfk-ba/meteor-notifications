@@ -19,9 +19,6 @@ $ meteor add gfk:notifications
 ### How do I make the notifications stay in the top corner of the viewport?
 If you want a notification to always be visible within the viewport of the browser even when the user scrolls, you should set the position of the notifications wrapper div to fixed. 
 
-## How do I push notification from server side
-You can use the [server-messages](https://github.com/gfk-ba/meteor-server-messages) package for that. The [example page](http://server-messages-example.meteor.com/) is setup for the usecase of notifications with this package [source](https://github.com/gfk-ba/meteor-server-messages-example)
-
 Add the following CSS to your application:
 ```
 ul.notifications {
@@ -29,6 +26,45 @@ position: fixed;
 }
 ```
 
+## How do I push notification from server side
+You can use the [server-messages](https://github.com/gfk-ba/meteor-server-messages) package for that. The [example page](http://server-messages-example.meteor.com/) is setup for the usecase of notifications with this package [source](https://github.com/gfk-ba/meteor-server-messages-example)
+
+First add ```gfk:server-messages``` to your application
+
+```
+meteor add gfk:server-messages
+```
+
+Then add the following code to your application:
+
+Shared:
+```
+serverMessages = new ServerMessages();
+```
+
+Client:
+```
+  serverMessages.listen('serverMessage:info', function (subject, message, options) {
+    Notifications.info(subject, message, options);
+  });
+
+  serverMessages.listen('serverMessage:warn', function (subject, message, options) {
+    Notifications.warn(subject, message, options);
+  });
+
+  serverMessages.listen('serverMessage:success', function (subject, message, options) {
+    Notifications.success(subject, message, options);
+  });
+
+  serverMessages.listen('serverMessage:error', function (subject, message, options) {
+    Notifications.error(subject, message, options);
+  });
+```
+
+Now you can push a notification to the server with the following code on the server:
+```
+serverMessages.notify('serverMessage:error', 'Error subject', 'Error message');
+```
 
 ## Contributing 
 
