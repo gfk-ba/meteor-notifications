@@ -1,18 +1,18 @@
 Package.describe({
   name: 'gfk:notifications',
   summary: 'Notifications - Add reactive notifications to any meteor template',
-  version: '1.1.3',
+  version: '1.1.4',
   git: 'https://github.com/gfk-ba/meteor-notifications'
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.0');
+  api.versionsFrom('METEOR@1.2');
 
   api.use([
     'templating',
     'underscore',
     'less',
-    'mongo@1.0.4'
+    'mongo'
   ], 'client');
 
   api.addFiles([
