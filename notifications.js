@@ -37,6 +37,7 @@ var constructor = (function() {
         notification.userCloseable = options.userCloseable;
         notification.clickBodyToClose = options.clickBodyToClose;
         notification.closed = options.closed;
+        notification.onRemoved = options.onRemoved;
 
         if (options.timeout) {
             notification.expires = new Date().getTime() + options.timeout;
@@ -164,6 +165,17 @@ var constructor = (function() {
 
         if (firstExpiration) {
             this._notificationTimeout = Meteor.setTimeout(function () {
+                // queue up the onRemoved
+                var needCallback = _ .filter(self._getNotificationsCollection().find({expires: {$lte: firstExpiration}}).fetch(),
+                                            function(notification) { return notification.onRemoved != undefined; }
+                                        );
+                if(needCallback.length > 0) {
+                    Meteor.setTimeout(function () {
+                        _.each(needCallback, function (notification) {
+                            if (notification.onRemoved) notification.onRemoved(notification); // check is redundant
+                        });
+                    }, 500);
+                }
                 self.remove({expires: {$lte: firstExpiration}});
                 self._createTimeout();
             }, firstExpiration - new Date().getTime());
