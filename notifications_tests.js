@@ -24,6 +24,7 @@ var tearDownFn = function () {
 var testNotification, timedNotification, clock, testId;
 
 var expect = chai.expect;
+var assert = chai.assert;
 
 describe('#addNotification', function () {
     beforeEach(function () {
@@ -54,6 +55,7 @@ describe('#addNotification', function () {
         expected.userCloseable = instance.defaultOptions.userCloseable;
         expected.clickBodyToClose = instance.defaultOptions.clickBodyToClose;
         expected.closed = undefined;
+        expected.onExpires = undefined;
 
         delete expected.timeout;
 
@@ -71,6 +73,7 @@ describe('#addNotification', function () {
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].userCloseable = false;
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].clickBodyToClose = false;
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].closed = 'blabla';
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].onExpires = undefined;
 
         delete expected.timeout;
         expected.title = testTitle;
@@ -79,7 +82,7 @@ describe('#addNotification', function () {
         expected.userCloseable = false;
         expected.clickBodyToClose = false;
         expected.closed = 'blabla';
-
+        expected.onExpires = undefined;
 
         instance.warn(testTitle, testMessage);
         expect(_add).to.have.been.calledWith(expected);
@@ -101,7 +104,8 @@ describe('#addNotification', function () {
             type: instance.TYPES.ERROR,
             userCloseable: false,
             clickBodyToClose: true,
-            closed: 'test123'
+            closed: 'test123',
+            onExpires: 'test456'
         };
 
         var _add = sandbox.stub(instance, '_add');
@@ -115,6 +119,8 @@ describe('#addNotification', function () {
         expected.userCloseable = testOptions.userCloseable;
         expected.clickBodyToClose = testOptions.clickBodyToClose;
         expected.closed = 'test123';
+        expected.onExpires = 'test456';
+
         delete expected.timeout;
         instance.addNotification(testTitle, testMessage, _.clone(testOptions));
         expect(_add).to.have.been.calledWith(expected);
@@ -272,6 +278,26 @@ describe('#_createTimeout', function () {
 
         expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
     });
+
+    it('Should callback onExpires when the timeout expires', function () {
+        timedNotification.expires = (new Date().getTime()) + 2000;
+
+        var flag = null;
+        timedNotification.onExpires = function(notification) {
+            flag = notification._id;
+        }
+        var notificationId = notificationsCollection.insert(timedNotification);
+
+        var collectionSize = notificationsCollection.find().count();
+        instance._createTimeout();
+        clock.tick(1999);
+        expect(notificationsCollection.find().count()).to.equal(collectionSize);
+        expect(flag).to.equal(null);
+        clock.tick(2000);
+
+        expect(notificationsCollection.find().count()).to.equal(collectionSize - 1);
+        expect(flag).to.equal(notificationId);
+    });
 });
 
 describe('#getDefaultOptions', function () {
@@ -292,3 +318,32 @@ describe('#getDefaultOptions', function () {
     });
 
 });
+
+describe('#onExpires', function () {
+    beforeEach(function () {
+        setupFn();
+        clock = sandbox.useFakeTimers();
+    });
+
+    it('Should call onExpires callback on timeout expiry', function () {
+        var flag = null;
+        var notificationId = instance.info('Title', 'test123', {
+            timeout: 2000,
+            onExpires: function(notification) {
+                flag = notification._id;
+            }
+        });
+
+        clock.tick(1999);
+        expect(notificationsCollection.find().count()).to.equal(1);
+        assert(flag === null, "onExpires fired prematurely");
+
+        clock.tick(2000);
+        assert(flag === notificationId,  "onExpires should have fired");
+        expect(notificationsCollection.find().count()).to.equal(0);
+   });
+
+
+});
+
+
