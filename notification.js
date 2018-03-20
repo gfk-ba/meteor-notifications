@@ -10,6 +10,9 @@ Template.notification.events = {
     'click': function (event) {
         if (this.userCloseable || this.expires < new Date()) {
             // must the user click the close button?
+            if (this.onBodyClick) {
+              this.onBodyClick(this);
+            }
             if (!this.clickBodyToClose && 0 > event.target.className.indexOf('closeButton')) {
                 return;
             }
