@@ -187,6 +187,7 @@ Adds a notification.
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+* **Function** *[options.onBodyClick]* Call this handler (passing data context) on notification body click
 
 ### Returns:
 
@@ -205,6 +206,7 @@ Wraps `addNotification`, sets type to error.
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+* **Function** *[options.onBodyClick]* Call this handler (passing data context) on notification body click
 
 ### Returns:
 
@@ -223,6 +225,7 @@ Wraps `addNotification`, sets type to warning
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+* **Function** *[options.onBodyClick]* Call this handler (passing data context) on notification body click
 
 ### Returns:
 
@@ -241,6 +244,7 @@ Wraps `addNotification`, sets type to info
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+* **Function** *[options.onBodyClick]* Call this handler (passing data context) on notification body click
 
 ### Returns:
 
@@ -259,6 +263,7 @@ Wraps `addNotification`, sets type to success
 * **Boolean** *[options.clickBodyToClose=defaultOptions.clickBodyToClose]* Whether the notification can be closed by clicking anywhere in the body. If turned off then the user must click the close button.
 * **Number** *[options.timeout=defaultOptions.timeout]* No. of milliseconds after which this notification should automatically be closed. Use 0 to disable this.
 * **Function** *[options.closed]* Call this handler (passing data context) on notification close
+* **Function** *[options.onBodyClick]* Call this handler (passing data context) on notification body click
 
 ### Returns:
 

@@ -55,10 +55,10 @@ describe('#addNotification', function () {
         expected.userCloseable = instance.defaultOptions.userCloseable;
         expected.clickBodyToClose = instance.defaultOptions.clickBodyToClose;
         expected.closed = undefined;
+        expected.onBodyClick = undefined;
         expected.onExpires = undefined;
 
         delete expected.timeout;
-
         instance.addNotification(testTitle, testMessage);
         expect(_add).to.have.been.calledWith(expected);
     });
@@ -73,6 +73,7 @@ describe('#addNotification', function () {
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].userCloseable = false;
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].clickBodyToClose = false;
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].closed = 'blabla';
+        Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].onBodyClick = 'bljablja';
         Notifications.defaultOptionsByType[Notifications.TYPES.WARNING].onExpires = undefined;
 
         delete expected.timeout;
@@ -82,6 +83,7 @@ describe('#addNotification', function () {
         expected.userCloseable = false;
         expected.clickBodyToClose = false;
         expected.closed = 'blabla';
+        expected.onBodyClick = 'bljablja';
         expected.onExpires = undefined;
 
         instance.warn(testTitle, testMessage);
@@ -105,6 +107,7 @@ describe('#addNotification', function () {
             userCloseable: false,
             clickBodyToClose: true,
             closed: 'test123',
+            onBodyClick: 'test321',
             onExpires: 'test456'
         };
 
@@ -119,6 +122,7 @@ describe('#addNotification', function () {
         expected.userCloseable = testOptions.userCloseable;
         expected.clickBodyToClose = testOptions.clickBodyToClose;
         expected.closed = 'test123';
+        expected.onBodyClick = 'test321';
         expected.onExpires = 'test456';
 
         delete expected.timeout;

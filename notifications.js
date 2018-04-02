@@ -24,6 +24,7 @@ var constructor = (function() {
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
      * @param {Boolean} [options.clickBodyToClose=defaultOptions.clickBodyToClose] Whether the notification can be closed by clicking anywhere within its body. If turned off then the close button must clicked.
      * @param {Function} [options.closed] Call this handler (passing data context) on notification close
+     * @param {Function} [options.onBodyClick] Call this handler (passing data context) on notification body click
      * @param {Function} [options.timeout] No. of milliseconds to show this notification for.
      */
     Notifications.prototype.addNotification = function (title, message, options) {
@@ -37,6 +38,7 @@ var constructor = (function() {
         notification.userCloseable = options.userCloseable;
         notification.clickBodyToClose = options.clickBodyToClose;
         notification.closed = options.closed;
+        notification.onBodyClick = options.onBodyClick;
         notification.onExpires = options.onExpires;
 
         if (options.timeout) {
@@ -53,6 +55,7 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
      * @param {Function} [options.closed] Call this handler (passing data context) on notification close
+     * @param {Function} [options.onBodyClick] Call this handler (passing data context) on notification body click
      * @returns {*}
      */
     Notifications.prototype.error = function (title, message, options) {
@@ -68,6 +71,7 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
      * @param {Function} [options.closed] Call this handler (passing data context) on notification close
+     * @param {Function} [options.onBodyClick] Call this handler (passing data context) on notification body click
      * @returns {*}
      */
     Notifications.prototype.warn = function (title, message, options) {
@@ -83,6 +87,7 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
      * @param {Function} [options.closed] Call this handler (passing data context) on notification close
+     * @param {Function} [options.onBodyClick] Call this handler (passing data context) on notification body click
      * @returns {*}
      */
     Notifications.prototype.info = function (title, message, options) {
@@ -98,6 +103,7 @@ var constructor = (function() {
      * @param {Object}  [options={}] Options object to use for notification
      * @param {Boolean} [options.userCloseable=defaultOptions.userCloseable] Whether the notification is user closeable
      * @param {Function} [options.closed] Call this handler (passing data context) on notification close
+     * @param {Function} [options.onBodyClick] Call this handler (passing data context) on notification body click
      * @returns {*}
      */
     Notifications.prototype.success = function (title, message, options) {
